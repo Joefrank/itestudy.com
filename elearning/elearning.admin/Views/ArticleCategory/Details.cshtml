@@ -1,0 +1,51 @@
+﻿@model elearning.model.ViewModels.ArticleCategoryDetailsVm
+@using elearning.model.Enums
+@using elearning.model.HtmlExtensions;
+
+<h2 class="medium-title">Article Category Details</h2>
+<!-- Form -->
+
+@using (Html.BeginForm("SaveDetails", "ArticleCategory", FormMethod.Post, new { id = "frmACategory", name = "frmACategory" }))
+{
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.Status)
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Category Name" })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @placeholder = "Description" })
+    </div>
+    <div class="form-group">
+        @Html.DropDownList("Status", 
+            EnumHelper.GetSelectList(typeof(ArticleCategoryStatus)) , 
+            "--Select--", 
+            new { @class = "form-control" })
+
+        @*@Html.DropDownWithValue(statusList, "Status", Model.Status.ToString(), "form-control")*@
+        @Html.ValidationMessageFor(model => model.Status, "", new {@class = "text-danger"})
+    </div>
+    <div class="form-group">
+        <label>Created By</label> @(Model.Creator.Firstname + " " + Model.Creator.Lastname)
+    </div>
+    <div class="form-group">
+        <label>Created On</label> @(Model.DateCreated.ToString("dd-MM-yyyy"))
+    </div>
+
+    if (Model.LastModifier != null)
+    {
+        <div class="form-group">
+            <label>Last Modified By</label> @(Model.LastModifier.Firstname + " " + Model.LastModifier.Lastname)
+        </div>
+        <div class="form-group">
+            <label>Last Modified</label> @(Model.LastModified?.ToString("dd-MM-yyyy") ?? "")
+        </div>
+    }
+
+    <button type="submit" class="btn btn-common">Save Category</button>
+
+}
+
+

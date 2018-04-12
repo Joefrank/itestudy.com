@@ -1,0 +1,48 @@
+﻿@using elearning.model.ViewModels;
+
+@model ActivatedUserVm
+
+<section class="faq" id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start Big Title -->
+                <h2 class="medium-title">
+                   Sign Up (Setp 2)
+                </h2>
+                <!-- Accordion -->
+                <div class="panel-group" id="accordion">
+                    <!-- Start Accordion 1 -->
+                    <div class="panel panel-default">
+                        <!-- Toggle Heading -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-1">
+                                    Hello <b>@Model.Firstname</b>,
+                                </a>
+                            </h4>
+                        </div>
+                        <!-- Toggle Content -->
+                        <div id="collapse-1">
+                            <div class="panel-body">
+                                <p>
+                                    It is a pleasure to have you on our site. We have sent you an email to confirm your registration and the final step is to 
+                                    click on the activation link on your email to activate your account.
+                                </p>                                
+                                <p>
+                                    Once your account is active, you can go to the login page and login to access your account.
+                                </p>
+                                <p>
+                                    <b>@Html.Raw(Model.Signature)</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 1 -->                   
+                </div>
+                <!-- End Accordion -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Content Section  -->

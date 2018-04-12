@@ -1,0 +1,29 @@
+﻿<h2 class="medium-title">Add article</h2>
+
+<form class="register-form" role="form" method="post">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="title" placeholder="Title">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Youtube link</label>
+            <input type="text" class="form-control" name="youtubelink" placeholder="youtube link">
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Catégoriy</label>
+            <input type="text" class="form-control" name="categoryid" placeholder="Category id">
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label>Content</label>
+        <textarea class="form-control" name="articlecontent" placeholder="Content" rows="9" required data-error="Write article content"></textarea>
+        <div class="help-block with-errors"></div>
+    </div>
+        <button class="btn btn-common" type="submit">Save</button>
+</form>
+

@@ -1,0 +1,34 @@
+﻿
+@model elearning.model.ViewModels.AddArticleCategoryVM
+@{
+    ViewData["title"] = "Add Article category";
+}
+
+<div class="page-header" style="background: url('/Content/img/banner1.jpg');">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="breadcrumb-wrapper">
+                    <h2 class="page-title">Article categories</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div id="register-div">
+                    @Html.Partial("~/Views/Shared/ArticleCategory/_AddArticleCategory.cshtml")
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

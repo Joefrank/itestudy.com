@@ -1,0 +1,48 @@
+﻿@using elearning.model.DataModels
+
+@model IEnumerable<Article>
+
+@if (Model.Any())
+{
+    <div class="table100 ver2 m-b-110">
+        <table data-vertable="ver2">
+            <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1">Id</th>
+                    <th class="column100 column2" data-column="column2">Title</th>
+                    <th class="column100 column3" data-column="column3">Created</th>
+                    <th class="column100 column4" data-column="column4">Author</th>
+                    <th class="column100 column5" data-column="column5">Status</th>
+                    <th class="column100 column6" data-column="column6">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var article in Model)
+                {
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">@article.Id</td>
+                        <td class="column100 column2" data-column="column2">@article.Title</td>
+                        <td class="column100 column3" data-column="column3">@article.DateCreated.ToString("dd-MM-yyyy")</td>
+                        <td class="column100 column4" data-column="column4">@(article.Creator.Firstname + " " + article.Creator.Lastname)</td>
+                        <td class="column100 column5" data-column="column5">@article.Status</td>
+                        <td class="column100 column6" data-column="column6">   
+                            <a href="/article/details/@article.Id">&nbsp; <i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>
+        There is no article in the database at the moment. Please create one by clicking on the button below.
+    </p>
+
+}
+<div class="read-btn">
+    <br />
+    <a class="btn btn-common" href="/articles/create">Create Article <i class="fa fa-angle-right"></i></a>
+</div>

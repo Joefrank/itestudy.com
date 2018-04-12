@@ -1,0 +1,62 @@
+﻿@model elearning.coding.Models.EditorSettingsVm
+
+@{
+    var totalHeight = 100;
+    var topTbHeight =5;
+    var bottomTbHeight = 5;
+    var editorHeight = totalHeight - (topTbHeight + bottomTbHeight);
+
+}
+<style type="text/css">
+    .top-toolbar {
+        width: 100%;
+        height: @(topTbHeight)%;
+        background-color: #663399;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    #editor {
+        position: absolute;
+        top: @(topTbHeight)%;
+        right: 0;
+        bottom: @(bottomTbHeight)%;
+        left: 0;
+        height: @(editorHeight)%;
+    }
+
+    .bottom-board {
+        height: @(bottomTbHeight - 1)%;
+        padding-top: 2px;
+        width: 100%;
+        background-color: #cd853f;
+        position: absolute;
+        top: @(totalHeight - bottomTbHeight)%;
+        bottom: 0;
+        left: 0;
+    }
+
+
+    .top-toolbar ul{ list-style: none;}
+
+    .top-toolbar ul li{ display: inline;margin: 5px 10px;color: white;}
+</style>
+
+<div id="topToolBar" class="top-toolbar">
+    <ul>
+        <li>Save</li>
+        <li>Split</li>
+    </ul>
+</div>
+
+<div id="editor">
+    @Model.InitialCode
+</div>
+
+<div id="bottomBoard" class="bottom-board">
+    <input type="text" PlaceHolder="Type Message" /><input type="button" value="Send"/>
+</div>
+
+<script src="~/scripts/ace-editor/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="~/Scripts/editor-config.js" type="text/javascript"></script>

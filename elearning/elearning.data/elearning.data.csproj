@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0EA92AD3-B7DB-4CC4-9A6C-307C86E44442}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>elearning.data</RootNamespace>
+    <AssemblyName>elearning.data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ELearningContextCustomInitializer.cs" />
+    <Compile Include="DataDbContext.cs" />
+    <Compile Include="Migrations\201804092136174_UpdateArticlesTable.cs" />
+    <Compile Include="Migrations\201804092136174_UpdateArticlesTable.Designer.cs">
+      <DependentUpon>201804092136174_UpdateArticlesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804092204488_ArticleUpdates.cs" />
+    <Compile Include="Migrations\201804092204488_ArticleUpdates.Designer.cs">
+      <DependentUpon>201804092204488_ArticleUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804112312154_ArticleDetailsUpdate.cs" />
+    <Compile Include="Migrations\201804112312154_ArticleDetailsUpdate.Designer.cs">
+      <DependentUpon>201804112312154_ArticleDetailsUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804112315125_ImagesDetails.cs" />
+    <Compile Include="Migrations\201804112315125_ImagesDetails.Designer.cs">
+      <DependentUpon>201804112315125_ImagesDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804112316380_ImagesDetails2.cs" />
+    <Compile Include="Migrations\201804112316380_ImagesDetails2.Designer.cs">
+      <DependentUpon>201804112316380_ImagesDetails2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="SQL\StoredProcs\LogItem.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\elearning.model\elearning.model.csproj">
+      <Project>{396f38e7-fd3c-49c5-aab6-d64fb62f1e6d}</Project>
+      <Name>elearning.model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804092136174_UpdateArticlesTable.resx">
+      <DependentUpon>201804092136174_UpdateArticlesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804092204488_ArticleUpdates.resx">
+      <DependentUpon>201804092204488_ArticleUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804112312154_ArticleDetailsUpdate.resx">
+      <DependentUpon>201804112312154_ArticleDetailsUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804112315125_ImagesDetails.resx">
+      <DependentUpon>201804112315125_ImagesDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804112316380_ImagesDetails2.resx">
+      <DependentUpon>201804112316380_ImagesDetails2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

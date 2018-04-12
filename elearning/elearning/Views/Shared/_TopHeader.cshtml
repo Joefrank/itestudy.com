@@ -1,0 +1,50 @@
+﻿@using elearning.utils.Helpers;
+@using System.Configuration
+@model elearning.model.ViewModels.SiteSettingsVm
+
+
+<div id="roof" class="hidden-xs">
+    <div class="container">
+        <!-- Wellcome Starts -->
+        <div class="pull-left">
+            <a href="/"><i class="fa fa-map-o" aria-hidden="true"></i> @ConfigurationManager.AppSettings["CompanyName"]</a>
+        </div>
+        <!-- Wellcome End -->
+        <!-- Quick Contacts Starts -->
+        <div class="quick-contacts pull-right">
+
+            <div class="dropdown dropdown-toggle div-inline">
+                <span>
+                    <a href="#" data-toggle="dropdown">Contact <i class="fa fa-angle-down"></i></a>
+                </span>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="fa fa-phone"></i> @ConfigurationManager.AppSettings["CompanyPhone"]</a></li>
+                    <li><a href="#"><i class="fa fa-envelope"></i> @ConfigurationManager.AppSettings["CompanyEmail"]</a></li>
+                    <li><a href="#"><i class="fa fa-comment"></i> Chat</a></li>
+                </ul>
+            </div>
+
+
+            @if (Model.ClientUser == null || !Model.ClientUser.IsLogged())
+            {
+                <span><a href="/account/login"><i class="fa fa-user"></i> Login</a> / <a href="/account/register">Register</a></span>
+            }
+            else
+            {
+                <div class="dropdown dropdown-toggle div-inline">
+                    <span>
+                        <a href="/myaccount/" data-toggle="dropdown"><i class="fa fa-user"></i> @AuthHelper.GetUserFirstName(Model.ClientUser.FullName) <i class="fa fa-angle-down"></i></a>
+                    </span>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><i class="fa fa-comment"></i> Notifications</a></li>
+                        <li><a href="#"><i class="fa fa-user-plus"></i> Log in as</a></li>
+                        <li><a href="#"><i class="fa fa-unlock"></i> Loggout</a></li>
+                    </ul>
+                </div>
+
+            }
+
+        </div>
+        <!-- Quick Contacts End -->
+    </div>
+</div>

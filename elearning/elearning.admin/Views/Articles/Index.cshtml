@@ -1,0 +1,27 @@
+﻿@using elearning.model.DataModels
+
+@model IEnumerable<Article>
+
+@section HeaderScripts{
+    @Html.Partial("_TableCSS")
+}
+
+<div class="blog-post">
+    <!-- Post Content -->
+    <div class="post-content">
+        <h3 class="post-title">Articles List</h3>
+        <p>
+            Find below a list of articles on the site.
+        </p>
+    </div>
+    <!-- Post Content -->
+    <!-- Read btn -->
+
+    <div>
+        @Html.Partial("~/Views/Shared/_Articles.cshtml", Model)
+    </div>
+</div>
+
+@section BottomScripts{
+    @Html.Partial("_TableJS")
+}

@@ -1,0 +1,28 @@
+﻿
+<section id="content">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div id="reminder-div" style="display:none">
+                    @Html.Partial("~/Views/Shared/Account/_ForgotPasswordForm.cshtml")
+                </div>
+                <div id="login-div">
+                    @Html.Partial("~/Views/Shared/Account/_LoginForm.cshtml")
+                    <br />
+                    <p>
+                        Forgotten your password? <a href="#" id="lnk-show-passwordreminder">click here to reset</a>
+                    </p>
+                    <p>
+                        Don't have an account yet, click <a href="/account/register">here</a> to register.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section BottomScripts{
+    <script type="text/javascript" src="~/scripts/site/register-login.js"></script>
+}

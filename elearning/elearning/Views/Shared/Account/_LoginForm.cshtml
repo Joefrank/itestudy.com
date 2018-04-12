@@ -1,0 +1,18 @@
+﻿@model elearning.model.ViewModels.LoginVm
+
+<h2 class="medium-title">Sign in</h2>
+<!-- Form -->
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "frmLoginUser", name = "frmLoginUser" }))
+{
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-common">Sign In</button>
+
+}

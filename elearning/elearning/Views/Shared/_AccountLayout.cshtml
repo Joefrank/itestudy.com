@@ -1,0 +1,48 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section AccountLayoutCascade{
+    <link rel="stylesheet" type="text/css" href="/Content/css/colors/blue.css" media="screen" />
+}
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+
+            <!--Sidebar-->
+            <aside id="sidebar" class="col-md-4 right-sidebar">
+                <!-- Search Widget -->
+
+                <div class="widget widget-categories">
+                    <h5 class="widget-title">Menu</h5>
+                    <ul class="cat-list">
+                        <li>
+                            <i class="fa fa-angle-right"></i><a href="/myaccount/details">My Details</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right"></i><a href="/myaccount/courses">My Courses</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-angle-right"></i><a href="/myaccount/tutors">My Tutors</a>
+                        </li>     
+                        <li>
+                            <i class="fa fa-angle-right"></i><a href="/myaccount/coding">Pair Coding</a>
+                        </li>   
+                        <li>
+                            <i class="fa fa-angle-right"></i><a href="/myaccount/notifications">Notifications</a>
+                        </li>                 
+                    </ul>
+                </div>
+                
+            </aside>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+</div>
+@section BottomScripts{
+    @RenderSection("BottomScripts", false)
+}

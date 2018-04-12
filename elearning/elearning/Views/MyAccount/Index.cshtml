@@ -1,0 +1,22 @@
+﻿@using CMCommon.Authentication.Models;
+
+@model ClientUser
+
+@{ 
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+
+<div class="blog-post">
+    <!-- Post Content -->
+    <div class="post-content">
+        <h3 class="post-title"><a href="single-post.html">Welcome @Model.FullName!</a></h3>
+        <p>
+            Please choose an item from the menu on your left to start with.
+        </p>
+        <p>
+            Here are some of your recent activities:
+        </p>
+    </div>
+  
+</div>

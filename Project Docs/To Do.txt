@@ -1,0 +1,18 @@
+
+- use security dll
+- use authentication dll
+- generate activation link
+- make script run on model initialize
+- Design Admin and account templates
+
+
+mission spot
+
+classes
+
+- vestry -> primary division
+- 3 classes in main auditorium
+- visitors
+- special needs
+- youth
+- children

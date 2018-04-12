@@ -1,0 +1,33 @@
+﻿
+@model elearning.model.ViewModels.RegisterVm
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Why Sign up?</h1>
+                <p>
+                    Sign up using the form on the right of the screen and get your hands on multiple courses, assessments and projects prepared by
+                    our expert developers and tutors.
+                    <br/>
+                    Even better, you won't be left alone to spend hours banging your head on things you don't understand, you can get tutor's help
+                    when you subscribe. click to review our <a href="/account/membership">membership break-down</a>.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <div id="register-div">
+                    @Html.Partial("~/Views/Shared/Account/_RegisterForm.cshtml", Model)
+                    <br />
+                    <p>
+                        Have an account? <a href="/account/login">click here to Login</a>
+                    </p>
+                </div>                
+            </div>
+          
+        </div>
+    </div>
+</section>
+
+@section BottomScripts{
+    <script type="text/javascript" src="~/scripts/site/register-login.js"></script>
+}

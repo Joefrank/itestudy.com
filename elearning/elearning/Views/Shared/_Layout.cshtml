@@ -1,0 +1,93 @@
+﻿@using elearning.model.ViewModels;
+@using elearning.utils.Helpers;
+@using System.Configuration;
+
+@{
+    var settings = new SiteSettingsVm
+    {
+        SiteType = elearning.model.Enums.SiteType.FrontEnd,
+        SiteName = ConfigurationManager.AppSettings["CompanyName"],
+        ClientUser = AuthHelper.GetClientUser()
+    };
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Bright">
+
+    <title>Bright – Bootstrap HTML5 Education Template</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="/Content/css/main.css">
+    <!-- Normalize Style -->
+    <link rel="stylesheet" href="/Content/css/normalize.css">
+    <!-- Fonts Awesome -->
+    <link rel="stylesheet" href="/Content/fonts/font-awesome.min.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="/Content/extras/animate.css" type="text/css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="/Content/extras/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="/Content/extras/owl.theme.css" type="text/css">
+    <!-- Rev Slider Css -->
+    <link rel="stylesheet" href="/Content/extras/settings.css" type="text/css">
+    <!-- Nivo Lightbox Css -->
+    <link rel="stylesheet" href="/Content/extras/nivo-lightbox.css" type="text/css">
+    <!-- Slicknav Css -->
+    <link rel="stylesheet" href="/Content/css/slicknav.css" type="text/css">
+    <!-- Responsive Style -->
+    <link rel="stylesheet" href="/Content/css/responsive.css">
+
+    <!-- Color CSS Styles  -->
+    <link rel="stylesheet" type="text/css" href="/Content/css/colors/sky.css" media="screen" />
+
+    @RenderSection("AccountLayoutCascade", false)
+
+    @RenderSection("HeaderScripts", false)
+</head>
+<body>
+
+    <!-- Header area wrapper Starts -->
+    <header id="header-wrap">
+
+        <!-- Roof area Starts -->
+        @Html.Partial("_TopHeader", settings)
+        <!-- Roof area End -->
+        <!-- Navbar Start -->
+        @Html.Partial("_TopNavigation")
+        <!-- Navbar End -->
+
+    </header>
+    <!-- Header area wrapper End -->
+
+    @RenderBody()
+
+
+    <!-- Footer Section -->
+    @Html.Partial("_Footer")
+    <!-- Footer Section End-->
+    <!-- Go To Top Link -->
+    <a href="#" class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+    </a>
+
+    <div class="loader">
+        <div class="preloader2">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- jQuery  -->
+    @Html.Partial("_FooterScripts")
+
+    @RenderSection("BottomScripts", false)
+</body>
+</html>

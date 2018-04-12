@@ -1,0 +1,28 @@
+contact emails:
+rmdassie@yahoo.com/ 
+swmconnexion22@gmail.com
+
+sample sites:
+
+ www.mintour.giv.cm
+ www.mintour.gov.cm
+
+The work with companies as freelance.
+
+Sample:
+
+https://www.learningtree.co.uk/delivery/
+
+
+HTML Editor:
+
+https://summernote.org/getting-started/#integration
+
+editor list
+
+https://www.sitepoint.com/10-best-html-wysiwyg-plugins/
+
+File Upload:
+
+https://pieterderycke.wordpress.com/2012/05/21/implementing-an-html5-drag-drop-based-file-upload-in-asp-net-mvc-3/
+http://demo.dotnetawesome.com/drag-drop-file-upload-aspnet-mvc

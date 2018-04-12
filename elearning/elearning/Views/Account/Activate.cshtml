@@ -1,0 +1,61 @@
+﻿@model elearning.model.ViewModels.ActivatedUserVm
+
+<section class="faq" id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Start Big Title -->
+                <h2 class="medium-title">
+                    @if (Model.Active)
+                    {
+                        <span>Account Activated</span>
+                    }
+                    else
+                    {
+                        <span>Account Activation Failed</span>
+                    }
+                </h2>
+                <!-- Accordion -->
+                <div class="panel-group">
+                    <!-- Start Accordion 1 -->
+                    <div class="panel panel-default">
+                        <!-- Toggle Heading -->
+                        @*<div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-1">
+                                    
+                                </a>
+                            </h4>
+                        </div>*@
+                        <!-- Toggle Content -->
+                        <div id="collapse-1">
+                            <div class="panel-body">
+                                @if (Model.Active)
+                                {
+                                <p>
+                                    Dear <b>@Model.Firstname</b>,<br/>
+                                    Your account is now active and you can click <a href="/account/login">here</a> to log into your account.
+                                    It is a pleasure to have you on our site. 
+                                </p>
+                                }
+                                else
+                                {
+                                    <p>
+                                        Unfortunately, your account could not be activated. <br/>
+                                        Please <a href="/contact">contact admin</a> to get an update on your registration.
+                                    </p>
+                                }
+                                <p>
+                                    <b>@Html.Raw(Model.Signature)</b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Accordion 1 -->
+                </div>
+                <!-- End Accordion -->
+            </div>
+        </div>
+    </div>
+</section>
+
