@@ -26,3 +26,6 @@ File Upload:
 
 https://pieterderycke.wordpress.com/2012/05/21/implementing-an-html5-drag-drop-based-file-upload-in-asp-net-mvc-3/
 http://demo.dotnetawesome.com/drag-drop-file-upload-aspnet-mvc
+
+
+- Find image memory stream download and upload to Umbraco media

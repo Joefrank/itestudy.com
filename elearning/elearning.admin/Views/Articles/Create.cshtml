@@ -11,9 +11,6 @@
 <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 
 
-
-
-
 @{
     var categoryList = ArticleHelper.GetCategoryList();
 
@@ -21,6 +18,10 @@
 
     var relatedObjectTypeList = ArticleHelper.GetArticleRelatedTypeList();
 }
+
+<div class="form-group">
+    @Html.Partial("_FileUpload")
+</div>
 
 @using (Html.BeginForm("Create", "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
 {
@@ -59,7 +60,7 @@
     <div class="form-group">
         <textarea id="Content" name="Content"></textarea>
         @*@Html.TextAreaFor(x => x.Content, new { @class = "form-control", @placeholder = "Content" })
-        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })*@
+            @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })*@
     </div>
 
     <button type="submit" class="btn btn-common">Create Article</button>
@@ -68,17 +69,9 @@
 
 
 
-
-
-
-
 @section BottomScripts{
-    @*<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>*@
+
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
-
-
-
 
     <script>
         $(document).ready(function () {
@@ -93,5 +86,32 @@
             });
         });
     </script>
+
+    @*<script src="~/scripts/FileUpload/jquery.filedrop.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#dropZone').filedrop({
+                url: '/File/UploadFiles',
+                paramname: 'files',
+                maxFiles: 5,
+                dragOver: function () {
+                    $('#dropZone').css('background', 'blue');
+                },
+                dragLeave: function () {
+                    $('#dropZone').css('background', 'gray');
+                },
+                drop: function () {
+                    $('#dropZone').css('background', 'gray');
+                },
+                afterAll: function () {
+                    $('#dropZone').html('The file(s) have been uploaded successfully!');
+                },
+                uploadFinished: function (i, file, response, time) {
+                    $('#uploadResult').append('<li>' + file.name + '</li>');
+                }
+            });
+        });
+    </script>*@
 
 }

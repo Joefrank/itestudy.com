@@ -2919,3 +2919,13 @@ fieldset[disabled] .btn {
 .generic-error h1, .generic-error h2 {
     color: darkred;
 }
+
+.dropZone {
+    background: #ddddff;
+    border: 2px dashed #0087F7;
+    width: 500px;
+    min-height:400px;
+    padding: 50px;
+    text-align: center;
+    color: red;
+}
