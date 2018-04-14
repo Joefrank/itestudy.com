@@ -97,6 +97,7 @@
     <Compile Include="Enums\SiteType.cs" />
     <Compile Include="Enums\UserType.cs" />
     <Compile Include="Generic\EmailStruct.cs" />
+    <Compile Include="Generic\JsonResultSet.cs" />
     <Compile Include="Generic\ReturnStructure.cs" />
     <Compile Include="Generic\SmtpSettings.cs" />
     <Compile Include="HtmlExtensions\ExtensionMethods.cs" />

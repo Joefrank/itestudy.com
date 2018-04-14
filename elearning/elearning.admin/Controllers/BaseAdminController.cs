@@ -49,6 +49,7 @@ namespace elearning.admin.Controllers
 
         public string SiteName => ConfigurationManager.AppSettings["SiteAutoMailer"];
 
+        public string ImageUploadDir => ConfigurationManager.AppSettings["ImageUploadDir"];
 
         private User _dbUser = null;
 

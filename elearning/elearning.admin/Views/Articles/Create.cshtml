@@ -10,6 +10,10 @@
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 
+@section HeaderScripts{
+
+
+}
 
 @{
     var categoryList = ArticleHelper.GetCategoryList();
@@ -72,8 +76,12 @@
 @section BottomScripts{
 
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
+    <script src="~/scripts/FileUpload/jquery-1.7.2.js"></script>
+    <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>
 
     <script>
+        var temp;
+
         $(document).ready(function () {
             $('#Content').summernote({
                 //lang: 'ko-KR' // default: 'en-US'
@@ -85,14 +93,10 @@
                 focus: true
             });
         });
-    </script>
 
-    @*<script src="~/scripts/FileUpload/jquery.filedrop.js"></script>
-
-    <script type="text/javascript">
         $(function () {
             $('#dropZone').filedrop({
-                url: '/File/UploadFiles',
+                url: '/File/UploadImage',
                 paramname: 'files',
                 maxFiles: 5,
                 dragOver: function () {
@@ -105,13 +109,21 @@
                     $('#dropZone').css('background', 'gray');
                 },
                 afterAll: function () {
-                    $('#dropZone').html('The file(s) have been uploaded successfully!');
+                    // $('#dropZone').html('The file(s) have been uploaded successfully!');
                 },
                 uploadFinished: function (i, file, response, time) {
+                    if (!response.IsSuccess) {
+                        alert(response.ErrorMessage)
+                        $('#dropZone').html(response.ErrorMessage);
+                        return;
+                    }
+                    temp = response;
+                    console.log(JSON.stringify(response));
                     $('#uploadResult').append('<li>' + file.name + '</li>');
                 }
             });
         });
-    </script>*@
+
+    </script>
 
 }

@@ -29,3 +29,12 @@ http://demo.dotnetawesome.com/drag-drop-file-upload-aspnet-mvc
 
 
 - Find image memory stream download and upload to Umbraco media
+- Read job desc
+
+
+- I need a bit more time to understand the system, infrastructural process (Cloud, disk space what to do who to talk to), Other things done for the client (reporting etc...)
+- My responsibilities towards the Engineers, whom can I talk to when I identify the need.
+- Code quality (what does a client expect) -> good quality needs time
+- Be able to interact with client to know their real needs (rather than proxies)
+- Budget for training and getting more knowledge into the team
+- Reviews status reports of engineers (what is this)

@@ -10,10 +10,10 @@ namespace elearning.model.DataModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public Guid Identifier { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Identifier { get; set; }
+        public int Id { get; set; }        
 
         public string Name { get; set; }
 
