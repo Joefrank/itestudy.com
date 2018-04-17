@@ -7,13 +7,12 @@ namespace elearning.model.DataModels
 {
     [Table("Image")]
     public class Image
-    {
+    { 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        
         public Guid Identifier { get; set; }
-
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }        
 
         public string Name { get; set; }
 

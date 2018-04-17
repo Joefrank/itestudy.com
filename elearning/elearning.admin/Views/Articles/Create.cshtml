@@ -76,8 +76,8 @@
 @section BottomScripts{
 
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
-    <script src="~/scripts/FileUpload/jquery-1.7.2.js"></script>
-    <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>
+    @*<script src="~/scripts/FileUpload/jquery-1.7.2.js"></script>
+    <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>*@
 
     <script>
         var temp;
@@ -93,37 +93,21 @@
                 focus: true
             });
         });
+       
+        Dropzone.options.dropzoneForm =
+            {
+                init: function () {
+                    this.on("complete", function (data) {
+                        //var res = eval('(' + data.xhr.responseText + ')');
 
-        $(function () {
-            $('#dropZone').filedrop({
-                url: '/File/UploadImage',
-                paramname: 'files',
-                maxFiles: 5,
-                dragOver: function () {
-                    $('#dropZone').css('background', 'blue');
-                },
-                dragLeave: function () {
-                    $('#dropZone').css('background', 'gray');
-                },
-                drop: function () {
-                    $('#dropZone').css('background', 'gray');
-                },
-                afterAll: function () {
-                    // $('#dropZone').html('The file(s) have been uploaded successfully!');
-                },
-                uploadFinished: function (i, file, response, time) {
-                    if (!response.IsSuccess) {
-                        alert(response.ErrorMessage)
-                        $('#dropZone').html(response.ErrorMessage);
-                        return;
-                    }
-                    temp = response;
-                    console.log(JSON.stringify(response));
-                    $('#uploadResult').append('<li>' + file.name + '</li>');
+                        var test = JSON.parse(data.xhr.responseText);
+
+                        $('#hdnUploadedIds').val(test.ResultObject.Id);
+                        //console.log("Image id " + test.ResultObject.Id)
+                        //console.log(JSON.stringify(data));
+                    });
                 }
-            });
-        });
-
+            };
     </script>
 
 }

@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using elearning.model.DataModels;
 using elearning.model.Generic;
 using System;
+using AutoMapper;
+using elearning.model.ViewModels;
 
 namespace elearning.admin.Controllers
 {
@@ -17,7 +19,72 @@ namespace elearning.admin.Controllers
         public ActionResult Index()
         {
             return View();
-        }        
+        }
+
+        [HttpPost]
+        public JsonResult UploadImageOnly()
+        {
+            var returnObject = new JsonResultSet();
+            var allImages = new List<ImageVm>();
+
+            try
+            {
+                foreach (string fileName in Request.Files)
+                {
+                    HttpPostedFileBase file = Request.Files[fileName];
+                    var fName = file.FileName;
+                    var extension = Path.GetExtension(fName);
+                    
+                    //validate file uploaded
+                    if (file == null || file.ContentLength < 1)
+                    {
+                        returnObject.IsSuccess = false;
+                        returnObject.ErrorMessage = "Invalid or empty file" ;
+                        return Json(returnObject, JsonRequestBehavior.AllowGet);
+                    }
+
+                    if (!ImageService.IsImageExtension(extension))
+                    {
+                        returnObject.IsSuccess = false;
+                        returnObject.ErrorMessage = "Invalid file extension only Images are accepted. Use one of the following formats: " + ImageService.AllExtensions();
+                        return Json(returnObject, JsonRequestBehavior.AllowGet);
+                    }
+                    //store record into DB
+                    var image = PersistImageToDb(file);                        
+                   
+                    if(image == null || image.Id < 1)
+                    {
+                        returnObject.IsSuccess = false;
+                        returnObject.ErrorMessage = "Sorry but file could not be saved.";
+                        return Json(returnObject, JsonRequestBehavior.AllowGet);
+                    }
+
+                    var path = Path.Combine(Server.MapPath(ImageUploadDir));
+                    var shortName = Path.GetFileName(file.FileName);
+
+                    if (!Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+
+                    var uploadpath = string.Format("{0}\\{1}", path, image.Identifier + image.Extension);
+                    file.SaveAs(uploadpath);
+
+                    allImages.Add(Mapper.Map<Image, ImageVm>(image));
+                }
+
+                returnObject.IsSuccess = true;
+                returnObject.ResultObject = allImages;
+
+                return Json(returnObject, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.LogItem("File upload failed " + ex.Message);
+                returnObject.IsSuccess = false;
+                returnObject.ErrorMessage = "Sorry! could not save image.";
+                return Json(returnObject, JsonRequestBehavior.AllowGet);
+            }  
+            
+        }
 
         [HttpPost]
         public JsonResult UploadImage(IEnumerable<HttpPostedFileBase> files)
@@ -40,20 +107,7 @@ namespace elearning.admin.Controllers
                         return Json(returnObject, JsonRequestBehavior.AllowGet);
                     }
 
-                   
-                    var img = System.Drawing.Image.FromStream(file.InputStream, true, true);
-                    int w = img.Width;
-                    int h = img.Height;
-
-                    var image = new Image
-                    {
-                        Name = file.FileName,
-                        Size = file.ContentLength,
-                        Extension = extension,
-                        Width = w,
-                        Height = h
-                    };
-                    ImageService.SaveImage(image);
+                    var image = PersistImageToDb(file);
 
                     string filePath = Path.Combine(Server.MapPath(ImageUploadDir), image.Identifier + extension);
                     System.IO.File.WriteAllBytes(filePath, ReadData(file.InputStream));
@@ -72,6 +126,26 @@ namespace elearning.admin.Controllers
             }
 
             return Json(returnObject, JsonRequestBehavior.AllowGet);
+        }
+
+        private Image PersistImageToDb(HttpPostedFileBase file)
+        {
+            var extension = Path.GetExtension(file.FileName);
+            var img = System.Drawing.Image.FromStream(file.InputStream, true, true);
+            int w = img.Width;
+            int h = img.Height;
+
+            var image = new Image
+            {
+                Identifier = Guid.NewGuid(),
+                Name = file.FileName,
+                Size = file.ContentLength,
+                Extension = extension,
+                Width = w,
+                Height = h
+            };
+
+            return ImageService.SaveImage(image);
         }
 
         [HttpPost]

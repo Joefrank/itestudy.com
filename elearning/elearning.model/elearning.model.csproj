@@ -108,6 +108,7 @@
     <Compile Include="ViewModels\AricleListVm.cs" />
     <Compile Include="ViewModels\CategoryListVm.cs" />
     <Compile Include="ViewModels\GlossaryVm.cs" />
+    <Compile Include="ViewModels\ImageVm.cs" />
     <Compile Include="ViewModels\LoginVm.cs" />
     <Compile Include="ViewModels\UpdateArticleVm.cs" />
     <Compile Include="ViewModels\UserDetailsVm.cs" />

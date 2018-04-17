@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201804142321071_ImageFile.Designer.cs">
       <DependentUpon>201804142321071_ImageFile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804172234493_UpdateImageTable.cs" />
+    <Compile Include="Migrations\201804172234493_UpdateImageTable.Designer.cs">
+      <DependentUpon>201804172234493_UpdateImageTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SQL\StoredProcs\LogItem.sql" />
@@ -107,6 +111,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804142321071_ImageFile.resx">
       <DependentUpon>201804142321071_ImageFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804172234493_UpdateImageTable.resx">
+      <DependentUpon>201804172234493_UpdateImageTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

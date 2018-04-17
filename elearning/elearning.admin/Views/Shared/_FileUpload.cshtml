@@ -1,9 +1,18 @@
 ﻿
 
-<h3>Image Upload</h3>
-<div class="dropZone" id="dropZone">Drop your file here</div>
-<br />
-Uploaded Images:
-<ul id="uploadResult"></ul>
+<script src="/scripts/dropzone/dropzone.min.js"></script>
+<link href="/scripts/dropzone/dropzone.min.css" rel="stylesheet" />
 
+<div class="jumbotron">
+    <form action="/File/UploadImageOnly" class="dropzone" id="dropzoneJsForm" style="background-color:#00BFFF">
+        <input type="hidden" name="hdnUploadedIds" id="hdnUploadedIds" />
+    </form>   
+</div>
+
+
+<script type="text/javascript">
+   // var test;
+
+   
+</script>
 
