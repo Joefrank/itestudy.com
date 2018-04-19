@@ -21,10 +21,22 @@
     var typeList = ArticleHelper.GetArticleTypeList();
 
     var relatedObjectTypeList = ArticleHelper.GetArticleRelatedTypeList();
+
+    var fileUploadModel = new FileUploadVm
+    {
+        MaxFileUpload = 1,
+        PopupTitle = "Image Upload"
+    };
 }
 
+
+<div class="form-group" id="dvImageHolder">
+   
+</div>
+
+
 <div class="form-group">
-    @Html.Partial("_FileUpload")
+    @Html.Partial("_FileUpload", fileUploadModel)
 </div>
 
 @using (Html.BeginForm("Create", "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
@@ -77,37 +89,59 @@
 
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
     @*<script src="~/scripts/FileUpload/jquery-1.7.2.js"></script>
-    <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>*@
+        <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>*@
 
     <script>
-        var temp;
-
-        $(document).ready(function () {
-            $('#Content').summernote({
-                //lang: 'ko-KR' // default: 'en-US'
-                placeholder: 'Article Content',
-                tabsize: 2,
-                height: 400,                 // set editor height
-                minHeight: null,             // set minimum height of editor
-                maxHeight: null,             // set maximum height of editor
-                focus: true
-            });
-        });
        
-        Dropzone.options.dropzoneForm =
-            {
-                init: function () {
-                    this.on("complete", function (data) {
-                        //var res = eval('(' + data.xhr.responseText + ')');
+        var returnObj;
+    var uploadCount = 0;
 
-                        var test = JSON.parse(data.xhr.responseText);
+    
 
-                        $('#hdnUploadedIds').val(test.ResultObject.Id);
-                        //console.log("Image id " + test.ResultObject.Id)
-                        //console.log(JSON.stringify(data));
-                    });
-                }
-            };
+    $(document).ready(function () {
+
+        $('#Content').summernote({
+            //lang: 'ko-KR' // default: 'en-US'
+            placeholder: 'Article Content',
+            tabsize: 2,
+            height: 400,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true
+        });
+
+        Dropzone.options.dropzoneJsForm =
+        {
+            maxFiles : @fileUploadModel.MaxFileUpload,
+            init: function () {
+               
+                this.on("complete", function (data) {
+                    alert(data.xhr.responseText)
+                    returnObj = JSON.parse(data.xhr.responseText);
+                    $('#hdnUploadedIds').val(returnObj.ResultObject[0].Identifier);
+                    $('#hdnImageUrl').val(returnObj.ResultObject[0].ImageUrl);
+                    $('#hdnImageName').val(returnObj.ResultObject[0].ImageUrl);
+                });
+
+            }
+        };
+
+        $("#btnSave").on("click", function (e) {
+            e.preventDefault(); // prevent de default action, which is to submit
+
+            $('#hdnUploadedIds').val();
+            var url = returnObj.ResultObject[0].ImageUrl;
+            var name = returnObj.ResultObject[0].Name;
+            var height = returnObj.ResultObject[0].Height;
+            var width = returnObj.ResultObject[0].Width;
+
+            $('#dvImageHolder').html('<img src="' + url + '" alt="' + name + '" width="' + width + '" height="' + height + '" />');
+
+            $(this).prev().click();
+
+        });
+
+    });
     </script>
 
 }

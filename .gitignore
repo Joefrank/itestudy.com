@@ -133,6 +133,9 @@ DocProject/Help/*.hhp
 DocProject/Help/Html2
 DocProject/Help/html
 
+#my excluded folders
+ImageUpload/
+
 # Click-Once directory
 publish/
 
