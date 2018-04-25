@@ -2929,3 +2929,14 @@ fieldset[disabled] .btn {
     text-align: center;
     color: red;
 }
+
+.img-place-holder{
+    min-height:400px;
+    min-width:400px;
+    background-image: url('/Content/img/img_place_holder.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    margin:10px 5px 20px;
+    color:white;
+    text-align:center;
+}

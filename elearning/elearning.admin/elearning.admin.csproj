@@ -223,6 +223,7 @@
     <Content Include="Content\img\flicker\img5.jpg" />
     <Content Include="Content\img\flicker\img6.jpg" />
     <Content Include="Content\img\flicker\img7.jpg" />
+    <Content Include="Content\img\img_place_holder.png" />
     <Content Include="Content\img\logo.png" />
     <Content Include="Content\img\map-marker.png" />
     <Content Include="Content\img\news\blog-1.jpg" />
@@ -326,6 +327,7 @@
     <Content Include="scripts\htmleditor\summernote\lang\summernote-zh-CN.js" />
     <Content Include="scripts\htmleditor\summernote\lang\summernote-zh-TW.js" />
     <Content Include="scripts\htmleditor\summernote\summernote.min.js" />
+    <Content Include="scripts\site\article.js" />
     <Content Include="scripts\site\myaccount.js" />
     <Content Include="scripts\site\register-login.js" />
     <Content Include="scripts\table\main.js" />

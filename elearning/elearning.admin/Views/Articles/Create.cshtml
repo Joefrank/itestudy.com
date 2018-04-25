@@ -6,14 +6,12 @@
 
 <h2 class="medium-title">Create Article</h2>
 <!-- Form -->
-
+@section HeaderScripts{
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 
-@section HeaderScripts{
-
-
 }
+
 
 @{
     var categoryList = ArticleHelper.GetCategoryList();
@@ -25,22 +23,24 @@
     var fileUploadModel = new FileUploadVm
     {
         MaxFileUpload = 1,
-        PopupTitle = "Image Upload"
+        PopupTitle = "Image Upload",
+        ParallelUploads = 1,
+        MaxFileSize = 20,
+        ImageIdCtrl = "MainImageLink"
     };
 }
-
-
-<div class="form-group" id="dvImageHolder">
-   
-</div>
 
 
 <div class="form-group">
     @Html.Partial("_FileUpload", fileUploadModel)
 </div>
+<div class="form-group" id="youtubepreview">
 
+</div>
 @using (Html.BeginForm("Create", "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
 {
+    @Html.HiddenFor(x => x.MainImageLink)
+    
     <div class="form-group">
         @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
         @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
@@ -92,56 +92,7 @@
         <script src="~/scripts/FileUpload/jquery.filedrop.js"></script>*@
 
     <script>
-       
-        var returnObj;
-    var uploadCount = 0;
-
-    
-
-    $(document).ready(function () {
-
-        $('#Content').summernote({
-            //lang: 'ko-KR' // default: 'en-US'
-            placeholder: 'Article Content',
-            tabsize: 2,
-            height: 400,                 // set editor height
-            minHeight: null,             // set minimum height of editor
-            maxHeight: null,             // set maximum height of editor
-            focus: true
-        });
-
-        Dropzone.options.dropzoneJsForm =
-        {
-            maxFiles : @fileUploadModel.MaxFileUpload,
-            init: function () {
-               
-                this.on("complete", function (data) {
-                    alert(data.xhr.responseText)
-                    returnObj = JSON.parse(data.xhr.responseText);
-                    $('#hdnUploadedIds').val(returnObj.ResultObject[0].Identifier);
-                    $('#hdnImageUrl').val(returnObj.ResultObject[0].ImageUrl);
-                    $('#hdnImageName').val(returnObj.ResultObject[0].ImageUrl);
-                });
-
-            }
-        };
-
-        $("#btnSave").on("click", function (e) {
-            e.preventDefault(); // prevent de default action, which is to submit
-
-            $('#hdnUploadedIds').val();
-            var url = returnObj.ResultObject[0].ImageUrl;
-            var name = returnObj.ResultObject[0].Name;
-            var height = returnObj.ResultObject[0].Height;
-            var width = returnObj.ResultObject[0].Width;
-
-            $('#dvImageHolder').html('<img src="' + url + '" alt="' + name + '" width="' + width + '" height="' + height + '" />');
-
-            $(this).prev().click();
-
-        });
-
-    });
+        var MaxFileUpload = @fileUploadModel.MaxFileUpload;
     </script>
-
+    <script src="~/scripts/site/article.js"></script>
 }

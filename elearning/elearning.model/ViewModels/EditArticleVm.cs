@@ -11,7 +11,7 @@ namespace elearning.model.ViewModels
         public string Title { get; set; }
         [Required(ErrorMessage = "Content is required")]
         public string Content { get; set; }
-        public int? MainImageLink { get; set; }
+        public Guid? MainImageLink { get; set; }
         public string YoutubeLinks { get; set; }
         public DateTime DateCreated { get; set; }
         public int CreatedBy { get; set; }

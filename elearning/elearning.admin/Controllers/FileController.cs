@@ -22,6 +22,42 @@ namespace elearning.admin.Controllers
         }
 
         [HttpPost]
+        public JsonResult DeleteImage(Guid imageId)
+        {
+            var returnObject = new JsonResultSet();
+
+            try
+            {
+                var image = ImageService.GetImage(imageId);
+                var imageName = image.Identifier + image.Extension;
+
+                //remove image from DB
+                var result = ImageService.DeleteImage(imageId);
+
+                if (!result)
+                    throw new Exception("Image not deleted from DB. Not able to remove physical image");
+
+                //remove physical image
+                var path = Path.Combine(Server.MapPath(ImageUploadDir));
+                var uploadpath = string.Format("{0}\\{1}", path, imageName);
+
+                System.IO.File.Delete(uploadpath);
+
+                //retur feedback to client
+                returnObject.IsSuccess = true;
+                returnObject.ResultObject = imageName;
+                return Json(returnObject, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.LogItem("Failed to delete image " + ex.Message);
+                returnObject.IsSuccess = false;
+                returnObject.ErrorMessage = "Sorry! could not save image.";
+                return Json(returnObject, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [HttpPost]
         public JsonResult UploadImageOnly()
         {
             var returnObject = new JsonResultSet();
@@ -147,6 +183,7 @@ namespace elearning.admin.Controllers
 
             return ImageService.SaveImage(image);
         }
+       
 
         [HttpPost]
         public ActionResult UploadFiles(IEnumerable<HttpPostedFileBase> files)

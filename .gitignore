@@ -135,6 +135,7 @@ DocProject/Help/html
 
 #my excluded folders
 ImageUpload/
+ImageUpload
 
 # Click-Once directory
 publish/

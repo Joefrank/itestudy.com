@@ -3,40 +3,119 @@
 <script src="/scripts/dropzone/dropzone.min.js"></script>
 <link href="/scripts/dropzone/dropzone.min.css" rel="stylesheet" />
 
+<style type="text/css">
+    .dropzone {
+        position: relative;
+        background-color:dimgrey;
+        border: 5px dashed #FFF;
+        border-radius: 20px;
+        color: white;
+        font: bold 24px/200px arial;
+        height: 300px;
+        margin: 30px auto;
+        text-align: center;
+        width: 100%;
+    }
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Upload Image
-</button>
+        .dropzone.hover {
+            border: 10px solid #FE5;
+            color: #FE5;
+        }
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">@Model.PopupTitle</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="jumbotron">
-                    <form action="/File/UploadImageOnly" class="dropzone" id="dropzoneJsForm" style="background-color:#00BFFF">
-                        <input type="hidden" name="hdnUploadedIds" id="hdnUploadedIds" />
-                        <input type="hidden" name="hdnImageUrl" id="hdnImageUrl" />
-                        <input type="hidden" name="hdnImageName" id="hdnImageName" />
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" id="btnSave" class="btn btn-primary">Finish</button>
-            </div>
-        </div>
-    </div>
-</div>
+        .dropzone.dropped {
+            background: #222;
+            border: 10px solid #444;
+        }
+
+        .dropzone div {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .dropzone img {
+            border-radius: 10px;
+            vertical-align: middle;
+            max-width: 95%;
+            max-height: 95%;
+        }
+
+        .dropzone [type="file"] {
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+</style>
+
+<form action="/File/UploadImageOnly" class="dropzone" id="my-awesome-dropzone" enctype="multipart/form-data">
+    <div id="dropzone-previews"></div>
+</form>
 
 
+<script type="text/javascript">
+    var imageIdCtrl = '@Model.ImageIdCtrl';
+    
+    Dropzone.options.myAwesomeDropzone = {
+        dictDefaultMessage: "Drag and drop files here or click to upload.",
+        thumbnailWidth: 400,
+        thumbnailHeight: 300,
+        paramName: "file",
+        maxFilesize: @Model.MaxFileSize,
+        url: '/File/UploadImageOnly',
+        previewsContainer: "#dropzone-previews",
+        uploadMultiple: @(Model.MultipleUpload? "true" : "false"),
+        parallelUploads: @Model.ParallelUploads,
+        maxFiles: @Model.MaxFileUpload,
+        init: function () {
+
+            var serverResult;
+
+            this.on("success", function (file, response) {
+
+                if (imageIdCtrl != '') {
+                    serverResult = response;
+                    $('#' + imageIdCtrl).val(serverResult.ResultObject[0].Identifier)
+                }
+
+                $('.dz-progress').hide();
+                $('.dz-size').hide();
+                $('.dz-error-mark').hide();
+                cd = response;
+            });
+            this.on("addedfile", function (file) {
+
+                var removeButton = Dropzone.createElement("<a href=\"#\">Remove file</a>");
+                var _this = this;
+
+                removeButton.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    _this.removeFile(file);
+
+                    //remove image and calls delete method from server
+                    $.ajax({
+                        type: 'POST',
+                        url: '/File/DeleteImage',
+                        data: "imageId=" + serverResult.ResultObject[0].Identifier,
+                        dataType: 'json'
+                    });
+
+                    if (imageIdCtrl != '') {
+                        $('#' + imageIdCtrl).val('');
+                    }
+                });
+                file.previewElement.appendChild(removeButton);
+            });
+        }
+    };
+
+</script>
 
 
 
