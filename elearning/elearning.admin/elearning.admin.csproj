@@ -419,6 +419,7 @@
     <Content Include="Content\css\summernote\font\summernote.ttf" />
     <Content Include="Content\css\summernote\font\summernote.woff" />
     <Content Include="Views\Shared\_FileUpload.cshtml" />
+    <Content Include="Views\Articles\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

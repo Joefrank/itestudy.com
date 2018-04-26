@@ -63,8 +63,8 @@
     
     Dropzone.options.myAwesomeDropzone = {
         dictDefaultMessage: "Drag and drop files here or click to upload.",
-        thumbnailWidth: 400,
-        thumbnailHeight: 300,
+        thumbnailWidth: 200,
+        thumbnailHeight: 200,
         paramName: "file",
         maxFilesize: @Model.MaxFileSize,
         url: '/File/UploadImageOnly',
@@ -73,21 +73,18 @@
         parallelUploads: @Model.ParallelUploads,
         maxFiles: @Model.MaxFileUpload,
         init: function () {
-
             var serverResult;
-
             this.on("success", function (file, response) {
-
                 if (imageIdCtrl != '') {
                     serverResult = response;
-                    $('#' + imageIdCtrl).val(serverResult.ResultObject[0].Identifier)
+                    $('#' + imageIdCtrl).val(serverResult.ResultObject[0].Id)
                 }
-
                 $('.dz-progress').hide();
                 $('.dz-size').hide();
                 $('.dz-error-mark').hide();
                 cd = response;
             });
+
             this.on("addedfile", function (file) {
 
                 var removeButton = Dropzone.createElement("<a href=\"#\">Remove file</a>");

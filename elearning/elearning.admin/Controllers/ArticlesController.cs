@@ -1,5 +1,8 @@
 ﻿
+using System;
 using System.Web.Mvc;
+using AutoMapper;
+using elearning.model.DataModels;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
 
@@ -30,11 +33,22 @@ namespace elearning.admin.Controllers
                 return View(model);
             }
 
+            model.CreatedBy = CurrentUserDb.Identity;
+            model.DateCreated = DateTime.Now;
+
             var article = ArticleService.AddArticle(model);
 
             if (article != null && article.Id > 0)
                 return Redirect("~/articles");
             ModelState.AddModelError("FaileToAddArticle", "Sorry could not add article. Try again or contact support");
+
+            return View(model);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var article = ArticleService.GetArticle(id);
+            var model = Mapper.Map<Article, EditArticleVm>(article);
 
             return View(model);
         }

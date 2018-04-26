@@ -1,15 +1,20 @@
 ﻿
 using System;
 using System.ComponentModel.DataAnnotations;
-
+using System.Web.Mvc;
 
 namespace elearning.model.ViewModels
 {
    public class EditArticleVm
     {
+        public int ArticleId { get; set; }
+
         [Required(ErrorMessage ="Title is required")]
         public string Title { get; set; }
+        
+        [AllowHtml]
         [Required(ErrorMessage = "Content is required")]
+
         public string Content { get; set; }
         public Guid? MainImageLink { get; set; }
         public string YoutubeLinks { get; set; }

@@ -20,6 +20,8 @@ namespace elearning.services.Implementation
 
                 using (var context = new DataDbContext())
                 {
+                    article.Creator = UserService.GetUserById(article.CreatedBy);
+
                     context.Articles.Add(article);
                     context.SaveChanges();
                 }
@@ -41,8 +43,8 @@ namespace elearning.services.Implementation
 
                 using (var context = new DataDbContext())
                 {
-                    articles = context.Articles.ToList();
-                    context.SaveChanges();
+                    articles = context.Articles
+                        .Include("Creator").ToList();
                 }
 
                 return articles;
@@ -67,7 +69,16 @@ namespace elearning.services.Implementation
 
         public Article GetArticle(int articleId)
         {
-            throw new NotImplementedException();
+            Article retArticle;
+
+            using (var context = new DataDbContext())
+            {
+                retArticle = context.Articles.FirstOrDefault(x => x.Id == articleId);
+                if(retArticle.Creator == null)
+                    retArticle.Creator = UserService.GetUserById(retArticle.CreatedBy);
+            }
+
+            return retArticle;
         }
         
         public void Update(UpdateArticleVm model)
