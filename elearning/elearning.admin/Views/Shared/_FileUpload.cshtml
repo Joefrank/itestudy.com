@@ -77,7 +77,7 @@
             this.on("success", function (file, response) {
                 if (imageIdCtrl != '') {
                     serverResult = response;
-                    $('#' + imageIdCtrl).val(serverResult.ResultObject[0].Id)
+                    $('#' + imageIdCtrl).val(serverResult.ResultObject[0].Identifier)
                 }
                 $('.dz-progress').hide();
                 $('.dz-size').hide();

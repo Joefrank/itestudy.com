@@ -19,10 +19,10 @@ namespace elearning.admin.Controllers
             return View(articles);
         }
 
+        [HttpGet]
         public ActionResult Create()
-        {
-            var model = new EditArticleVm();
-            return View(model);
+        {           
+            return View(GetFileUploadModel(new EditArticleVm()));
         }
 
         [HttpPost]
@@ -30,7 +30,7 @@ namespace elearning.admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View(GetFileUploadModel(model));
             }
 
             model.CreatedBy = CurrentUserDb.Identity;
@@ -40,17 +40,38 @@ namespace elearning.admin.Controllers
 
             if (article != null && article.Id > 0)
                 return Redirect("~/articles");
+
             ModelState.AddModelError("FaileToAddArticle", "Sorry could not add article. Try again or contact support");
 
-            return View(model);
+            return View(GetFileUploadModel(model));
         }
 
+        [HttpGet]
         public ActionResult Details(int id)
         {
             var article = ArticleService.GetArticle(id);
             var model = Mapper.Map<Article, EditArticleVm>(article);
-
-            return View(model);
+           
+            return View(GetFileUploadModel(model));
         }
+
+        #region utils
+
+        private EditArticleVm GetFileUploadModel(EditArticleVm articleVm)
+        {
+            articleVm.FileModel = new FileUploadVm
+            {
+                MaxFileUpload = 1,
+                PopupTitle = "Image Upload",
+                ParallelUploads = 1,
+                MaxFileSize = 20,
+                ImageIdCtrl = "MainImageLink"
+            };
+
+            return articleVm;
+        }
+
+        #endregion
+
     }
 }

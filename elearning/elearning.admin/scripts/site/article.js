@@ -4,6 +4,9 @@ var uploadCount = 0;
 
 $(document).ready(function () {
 
+    //var YoutubePreviewId must be specified on calling page script
+    var previewId = (YoutubePreviewId !== null) ? YoutubePreviewId : "youtubepreview";
+
     $('#Content').summernote({
         //lang: 'ko-KR' // default: 'en-US'
         placeholder: 'Article Content',
@@ -14,46 +17,31 @@ $(document).ready(function () {
         focus: true
     });
 
-    
-
-});
-
-
-$(document).ready(function () {
-
-    $('#YoutubeLinks').blur(function () {
-
-        var id = getYoutubeID($(this).val());
-
-        var thumb_url = "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg";
-
-        var youtube_url = "https://www.youtube.com/embed/" + id + "";
-
-        $('<a href="' + youtube_url + '"><img src="' + thumb_url + '" /></a>').appendTo($('#youtubepreview'));
-
+    $('#' + YoutubeSourceCtrlId).blur(function () {        
+        var link = $(this).val();
+        makePreview(link);
     });
 
 
     function getYoutubeID(url) {
-
         var id = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
-
         id = id[1];
-
         return id;
-
     };
 
-    //$('p').each(function () {
+    function makePreview(url) {
+        var id = getYoutubeID(url);
+        var thumb_url = "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg";
+        var youtube_url = "https://www.youtube.com/embed/" + id + "";
+        $('#' + previewId).html('<a href="' + youtube_url + '"><img src="' + thumb_url + '" /></a>');
+    }
 
-    //    var id = getYoutubeID($(this).html());
+    function LoadYoutubeVideo() {
+        var link = $('#' + YoutubeSourceCtrlId).val();
 
-    //    var thumb_url = "https://i.ytimg.com/vi/" + id + "/mqdefault.jpg";
+        if(link !== "")
+            makePreview(link);
+    }
 
-    //    var youtube_url = "https://www.youtube.com/embed/" + id + "";
-
-    //    $('<a href="' + youtube_url + '"><img src="' + thumb_url + '" /></a>').appendTo($(this));
-
-    //});
-
+    LoadYoutubeVideo();
 });

@@ -1,0 +1,69 @@
+﻿@using elearning.admin.Helpers;
+
+@model elearning.model.ViewModels.EditArticleVm
+
+@{               
+
+    var actionEditName = Model.ArticleId > 0 ? "Update" : "Create";
+
+    var categoryList = ArticleHelper.GetCategoryList();
+    var typeList = ArticleHelper.GetArticleTypeList();
+    var relatedObjectTypeList = ArticleHelper.GetArticleRelatedTypeList();
+}
+
+@using (Html.BeginForm(actionEditName, "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
+{
+    @Html.ValidationSummary()
+
+    @Html.HiddenFor(x => x.MainImageLink)
+    @Html.HiddenFor(x => x.ArticleId)
+
+    <div class="form-group">
+        <label for="Title">Title <span class="required">*</span></label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="YoutubeLinks">YouTube Link </label>
+        @Html.TextBoxFor(x => x.YoutubeLinks, new { @class = "form-control", @placeholder = "Video Link" })
+    </div>
+
+    <div class="form-group" id="youtubepreview"></div>
+    
+    <div class="form-group">
+        <label for="MainImageLink">Main Image </label>
+        @Html.TextBoxFor(x => x.MainImageLink, new { @class = "form-control", @placeholder = "Main Image Link", @disabled= "disabled" })
+    </div>
+
+    <div class="form-group">
+        <label for="CategoryId">Category <span class="required">*</span></label>
+        @Html.DropDownListFor(x => x.CategoryId, new SelectList(categoryList, "Id", "Name"), "--Select Category--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="Type">Type <span class="required">*</span></label>
+        @Html.DropDownListFor(x => x.Type, new SelectList(typeList, "Id", "Name"), "--Select Article Type--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <label for="RelatedObjectTypeId">Related Object </label>
+        @Html.DropDownListFor(x => x.RelatedObjectTypeId, new SelectList(relatedObjectTypeList, "Id", "Name"), "--Select Relation Type--",
+                       new { @class = "form-control", @onchange = "GetRelatedObjects(this)" })
+
+        <span id="spRelatedObjects" style="display:none;">
+            <br />
+            <select id="RelatedObjectId" name="RelatedObjectId"></select>
+        </span>
+    </div>
+
+    <div class="form-group">
+        <textarea id="Content" name="Content">@Model.Content</textarea>
+    </div>
+
+    <button type="submit" class="btn btn-common">@actionEditName Article</button>
+
+}
+

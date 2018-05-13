@@ -28,5 +28,7 @@ namespace elearning.model.ViewModels
         public int? RelatedObjectId { get; set; }
         public DateTime? LastModified { get; set; }
         public int? LastModifiedBy { get; set; }
+
+        public FileUploadVm FileModel { get; set; }
     }
 }

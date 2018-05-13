@@ -2940,3 +2940,14 @@ fieldset[disabled] .btn {
     color:white;
     text-align:center;
 }
+
+.required{
+    color:red;
+}
+
+.validation-summary-errors{
+    color:red;
+    width:99%;
+    border:1px solid #b08b34;
+    background-color:pink;
+}

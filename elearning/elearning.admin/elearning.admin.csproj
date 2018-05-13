@@ -273,6 +273,15 @@
     <Content Include="Content\js\owl.carousel.min.js" />
     <Content Include="Content\js\wow.js" />
     <Content Include="Global.asax" />
+    <Content Include="ImageUpload\1225299.png" />
+    <Content Include="ImageUpload\4f781438-760e-4c25-b65e-4c6a24103b19.jpg" />
+    <Content Include="ImageUpload\5174c035-1d2b-4b14-a4c4-085118269981.png" />
+    <Content Include="ImageUpload\82ea12ed-4b23-410e-905c-248913f28bd0.jpg" />
+    <Content Include="ImageUpload\c1172df9-cf56-4d61-83a2-cbf42befae4e.jpg" />
+    <Content Include="ImageUpload\c9bd8858-d015-4123-9057-0ddb660815eb.jpg" />
+    <Content Include="ImageUpload\CourseSearch.png" />
+    <Content Include="ImageUpload\dedfc2bd-9369-4f69-bb48-f95580798bb3.jpg" />
+    <Content Include="ImageUpload\img-2.jpg" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\account.js" />
@@ -420,6 +429,7 @@
     <Content Include="Content\css\summernote\font\summernote.woff" />
     <Content Include="Views\Shared\_FileUpload.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
+    <Content Include="Views\Shared\Forms\_ArticleEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
