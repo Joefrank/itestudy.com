@@ -11,7 +11,7 @@ namespace elearning.services.Interfaces
         List<Article> GetAll();
         IEnumerable<Article> FindArticle(String keyowrd);
         Article GetArticle(int articleId);
-        void Update(UpdateArticleVm model);
+        bool Update(EditArticleVm model);
         void Delete(int categoryId);
     }
 }

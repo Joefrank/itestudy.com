@@ -3,9 +3,9 @@ namespace elearning.model.Enums
 {
     public enum ArticleStatus
     {
-        Draft,
-        Published,
-        Suspended,
-        Deleted
+        Draft =1,
+        Published =2,
+        Suspended =3,
+        Deleted = 4
     }
 }

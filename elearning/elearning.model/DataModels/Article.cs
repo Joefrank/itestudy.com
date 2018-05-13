@@ -11,6 +11,7 @@ namespace elearning.model.DataModels
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
         [Required]
         [MinLength(5)]
         [MaxLength(1000)]
@@ -18,14 +19,15 @@ namespace elearning.model.DataModels
         [Required]
         [MinLength(25)]
         public string Content { get; set; }
-        public int? MainImageLink { get; set; }
+        public Guid? MainImageLink { get; set; }
+
         [MaxLength(200)]
         public string YoutubeLinks { get; set; }
         public int CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime? LastModified { get; set; }
         public int? LastModifiedBy { get; set; }
-        public ArticleStatus Status { get; set; }
+        public int Status { get; set; }
         public int Type { get; set; }
         public int CategoryId { get; set; }
         public int? RelatedObjectTypeId { get; set; }

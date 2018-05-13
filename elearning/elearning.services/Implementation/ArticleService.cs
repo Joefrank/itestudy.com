@@ -6,6 +6,8 @@ using elearning.model.ViewModels;
 using elearning.data;
 using AutoMapper;
 using elearning.model.DataModels;
+using System.Data.Entity.Validation;
+using System.Text;
 
 namespace elearning.services.Implementation
 {
@@ -28,11 +30,29 @@ namespace elearning.services.Implementation
 
                 return article;
             }
+            catch(DbEntityValidationException dbEx)
+            {
+                var sbContent = new StringBuilder();
+
+                foreach (var eve in dbEx.EntityValidationErrors)
+                {
+                    sbContent.AppendLine(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State));
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        sbContent.AppendLine(string.Format("- Property: \"{0}\", Error: \"{1}\"", ve.PropertyName, ve.ErrorMessage));
+                    }
+                }
+
+                Logger.LogItem(sbContent.ToString());                
+            }
             catch (Exception ex)
             {
                 Logger.LogItem(ex.Message);
-                return null;
             }
+
+            return null;
         }
 
         public List<Article> GetAll()
@@ -81,9 +101,28 @@ namespace elearning.services.Implementation
             return retArticle;
         }
         
-        public void Update(UpdateArticleVm model)
+        public bool Update(EditArticleVm model)
         {
-            throw new NotImplementedException();
+            using (var context = new DataDbContext())
+            {
+                var retArticle = context.Articles.FirstOrDefault(x => x.Id == model.ArticleId);
+
+                retArticle.LastModified = DateTime.Now;
+                retArticle.LastModifiedBy = model.LastModifiedBy;
+                retArticle.Title = model.Title;
+                retArticle.Content = model.Content;
+                retArticle.Status = model.Status;
+                retArticle.MainImageLink = model.MainImageLink;
+                retArticle.CategoryId = model.CategoryId;
+                retArticle.Type = model.Type;
+                retArticle.YoutubeLinks = model.YoutubeLinks;
+                retArticle.RelatedObjectId = model.RelatedObjectId;
+                retArticle.RelatedObjectTypeId = model.RelatedObjectTypeId;
+
+                context.SaveChanges();
+            }
+
+            return true;
         }
     }
 }

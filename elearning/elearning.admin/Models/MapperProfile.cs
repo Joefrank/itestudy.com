@@ -28,12 +28,14 @@ namespace elearning.admin.Models
 
             CreateMap<ArticleCategory, ArticleCategoryDetailsVm>();
             CreateMap<ArticleCategoryDetailsVm, ArticleCategory>();
-            CreateMap<EditArticleVm, Article>();
+            CreateMap<EditArticleVm, Article>()
+                ;
             CreateMap<Article, EditArticleVm>()
                 .ForMember(g => g.ArticleId, opt => opt.MapFrom(source => source.Id));
 
             CreateMap<Image, ImageVm>()
                 .ForMember(g => g.ImageUrl, opt => opt.MapFrom(source => string.Format("{0}{1}/{2}", siteRoot , imageUpload, source.Identifier + source.Extension)));
+
         }
     }
 }

@@ -2947,7 +2947,9 @@ fieldset[disabled] .btn {
 
 .validation-summary-errors{
     color:red;
-    width:99%;
+    width:98%;
     border:1px solid #b08b34;
     background-color:pink;
+    padding:1% 0;
+    margin-bottom: 10px; 
 }

@@ -4,7 +4,7 @@
 @{ 
     var showFileUpload = (Model.MainImageLink == null || Model.MainImageLink == Guid.Empty);
     var mainImageHtml = (Model.MainImageLink != null && Model.MainImageLink.HasValue) ?
-            "" : "<img src=\"" + Model.MainImageLink + "\" alt=\"" + Model.Title + "\" />";
+            "<img src=\"" + Model.MainImage.ImageUrl + "\" alt=\"" + Model.MainImage.Name + "\" />" : "";
 }
 
 <h2 class="medium-title">Edit Article</h2>
@@ -20,7 +20,7 @@
 </div>
 
 <div class="form-group" style="display:@(showFileUpload? "none" : "block")">
-    @mainImageHtml
+    @Html.Raw(mainImageHtml)
 </div>
 
 @Html.Partial("~/Views/Shared/Forms/_ArticleEdit.cshtml")
