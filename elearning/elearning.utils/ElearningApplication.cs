@@ -81,7 +81,8 @@ namespace elearning.utils
                     .As<IEmailService>().InstancePerLifetimeScope();
             }
 
-            builder.RegisterType<ArticleCatogoryService>().As<IArticleCatogoryService>();
+            builder.RegisterType<ArticleCatogoryService>().As<ICourseCatogoryService>();
+            builder.RegisterType<CourseCategoryService>().As<ICourseCategoryService>();
             builder.RegisterType<ArticleService>().As<IArticleService>();
             builder.RegisterType<ImageService>().As<IImageService>();
 

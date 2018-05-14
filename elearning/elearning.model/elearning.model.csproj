@@ -88,6 +88,7 @@
     <Compile Include="Enums\ArticleCategoryStatus.cs" />
     <Compile Include="Enums\ArticleRelatedObjectType.cs" />
     <Compile Include="Enums\ArticleType.cs" />
+    <Compile Include="Enums\CourseCategoryStatus.cs" />
     <Compile Include="Enums\CourseStatus.cs" />
     <Compile Include="Enums\EmailTemplateType.cs" />
     <Compile Include="Enums\Environment.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\ActivatedUserVm.cs" />
     <Compile Include="ViewModels\ArticleCategoryVm.cs" />
+    <Compile Include="ViewModels\CourseCategoryEditVm.cs" />
     <Compile Include="ViewModels\EditArticleVm.cs" />
     <Compile Include="ViewModels\AricleListVm.cs" />
     <Compile Include="ViewModels\CategoryListVm.cs" />

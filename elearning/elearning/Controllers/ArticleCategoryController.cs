@@ -8,7 +8,7 @@ namespace elearning.Controllers
     [Route("ArticleCategory")]
     public class ArticleCategoryController : Controller
     {
-        public IArticleCatogoryService IArticleCatogoryService { get; set; }
+        public ICourseCatogoryService IArticleCatogoryService { get; set; }
         // GET: ArticleCategory
         public ActionResult Index()
         {

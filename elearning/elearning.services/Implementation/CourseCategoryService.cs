@@ -1,29 +1,27 @@
-﻿using elearning.services.Interfaces;
+﻿using AutoMapper;
+using elearning.data;
+using elearning.model.DataModels;
+using elearning.model.ViewModels;
+using elearning.services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using elearning.model.ViewModels;
-using AutoMapper;
-using elearning.data;
-using elearning.model.DataModels;
 
 namespace elearning.services.Implementation
 {
-    public class ArticleCatogoryService : BaseService, ICourseCatogoryService 
+    public class CourseCategoryService : BaseService, ICourseCategoryService
     {
-       
-        // add new article category
-        public ArticleCategory AddCategory(ArticleCategoryVm model)
+        public CourseCategory AddCategory(CourseCategoryEditVm model)
         {
             try
             {
-                var category = Mapper.Map<ArticleCategoryVm, ArticleCategory>(model);
+                var category = Mapper.Map<CourseCategoryEditVm, CourseCategory>(model);
 
                 category.Creator = UserService.GetUserById(category.CreatedBy);
 
                 using (var context = new DataDbContext())
                 {
-                    context.ArticleCategories.Add(category);
+                    context.CourseCatogories.Add(category);
                     context.SaveChanges();
                 }
 
@@ -34,18 +32,19 @@ namespace elearning.services.Implementation
                 Logger.LogItem(ex.Message);
                 return null;
             }
-        }     
-       
-        
-        public IEnumerable<ArticleCategory> FindCategory(string keyowrd)
-        {
-            try { 
+        }
 
-                IEnumerable<ArticleCategory> returnList;
+        public IEnumerable<CourseCategory> FindCategory(string keyowrd)
+        {
+            try
+            {
+
+                IEnumerable<CourseCategory> returnList;
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.ArticleCategories.Where(ac => ac.Name.ToLower().Contains(keyowrd.ToLower()));
+                    returnList = context.CourseCatogories.
+                        Where(ac => ac.Name.ToLower().Contains(keyowrd.ToLower()));
                 }
 
                 return returnList;
@@ -55,17 +54,17 @@ namespace elearning.services.Implementation
                 Logger.LogItem(ex.Message);
                 return null;
             }
-        }       
+        }
 
-        //list category
-        public List<ArticleCategory> GetAll()
+        public List<CourseCategory> GetActiveCategories()
         {
-            try { 
-                List<ArticleCategory> returnList;
+            try
+            {
+                List<CourseCategory> returnList;
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.ArticleCategories
+                    returnList = context.CourseCatogories
                         .Include("Creator").ToList();
                 }
 
@@ -78,16 +77,16 @@ namespace elearning.services.Implementation
             }
         }
 
-        public List<ArticleCategory> GetActiveCategories()
+        public List<CourseCategory> GetAll()
         {
             try
             {
-                List<ArticleCategory> returnList;
+                List<CourseCategory> returnList;
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.ArticleCategories.Where(x => x.Status == model.Enums.ArticleCategoryStatus.Active)
-                       .ToList();
+                    returnList = context.CourseCatogories
+                        .Include("Creator").ToList();
                 }
 
                 return returnList;
@@ -99,15 +98,15 @@ namespace elearning.services.Implementation
             }
         }
 
-        public ArticleCategory GetCategory(int categoryId)
+        public CourseCategory GetCategory(int categoryId)
         {
-            ArticleCategory category;
+            CourseCategory category;
 
             try
             {
                 using (var context = new DataDbContext())
                 {
-                    category = context.ArticleCategories.FirstOrDefault(ac => ac.Id == categoryId);
+                    category = context.CourseCatogories.FirstOrDefault(ac => ac.Id == categoryId);
 
                     if (category != null)
                     {
@@ -130,15 +129,16 @@ namespace elearning.services.Implementation
             }
         }
 
-        public void Update(ArticleCategoryDetailsVm model)
+        public bool Update(CourseCategoryEditVm model)
         {
             try
             {
                 using (var context = new DataDbContext())
                 {
-                    var category = context.ArticleCategories.FirstOrDefault(x => x.Id == model.Id);
-                    if(category == null)
-                        throw new Exception("Article category not found " + model.Id);
+                    var category = context.CourseCatogories.FirstOrDefault(x => x.Id == model.Id);
+
+                    if (category == null)
+                        throw new Exception("Course category not found " + model.Id);
 
                     category.Name = model.Name;
                     category.Description = model.Description;
@@ -149,30 +149,33 @@ namespace elearning.services.Implementation
 
                     context.SaveChanges();
                 }
+                return true;
 
             }
             catch (Exception ex)
             {
                 Logger.LogItem(ex.Message);
+                return false;
             }
-
         }
 
-        public void Delete(int categoryId)
+        public bool Delete(int categoryId)
         {
-            try { 
+            try
+            {
                 using (var context = new DataDbContext())
                 {
                     var category = context.ArticleCategories.FirstOrDefault(x => x.Id == categoryId);
                     context.ArticleCategories.Remove(category ?? throw new InvalidOperationException());
                     context.SaveChanges();
                 }
+                return true;
             }
             catch (Exception ex)
             {
                 Logger.LogItem(ex.Message);
+                return false;
             }
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿
 namespace elearning.model.Enums
 {
-    public enum CourseStatus
+    public enum CourseCategoryStatus
     {
         Draft=0,
         Published=1,

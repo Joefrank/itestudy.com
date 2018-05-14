@@ -430,6 +430,9 @@
     <Content Include="Views\Shared\_FileUpload.cshtml" />
     <Content Include="Views\Articles\Details.cshtml" />
     <Content Include="Views\Shared\Forms\_ArticleEdit.cshtml" />
+    <Content Include="Views\Shared\_CourseCategories.cshtml" />
+    <Content Include="Views\CourseCategory\Create.cshtml" />
+    <Content Include="Views\CourseCategory\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

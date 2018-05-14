@@ -1,4 +1,5 @@
-﻿using System;
+﻿using elearning.model.Enums;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,7 +23,7 @@ namespace elearning.model.DataModels
         public DateTime DateCreated { get; set; }
         public DateTime? LastModified { get; set; }
         public int? LastModifiedBy { get; set; }
-        public bool Active { get; set; }
+        public int Status { get; set; }
 
         public virtual User Creator { get; set; }
         public virtual User LastModifier { get; set; }

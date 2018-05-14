@@ -1,7 +1,31 @@
-﻿
-@{
-    ViewBag.Title = "Index";
+﻿@using elearning.model.DataModels
+
+@model IEnumerable<CourseCategory>
+
+@section HeaderScripts{
+    @Html.Partial("_TableCSS")
 }
 
-<h2>Index</h2>
+<div class="blog-post">
+    <!-- Post Content -->
+    <div class="post-content">
+        <h3 class="post-title">Course Categories</h3>
+        @if (Model.Any())
+        {
+        <p>
+            Here is a list of all course categories.
+        </p>
+        }
+        
+    </div>
+    <!-- Post Content -->
+    <!-- Read btn -->
 
+    <div>
+        @Html.Partial("~/Views/Shared/_CourseCategories.cshtml", Model)
+    </div>
+</div>
+
+@section BottomScripts{
+    @Html.Partial("_TableJS")
+}

@@ -9,7 +9,7 @@ namespace elearning.admin.Controllers
 {
     public class ArticleCategoryController : BaseAdminController
     {
-        public IArticleCatogoryService CategoryService { get; set; }
+        public ICourseCatogoryService CategoryService { get; set; }
 
         // GET: ArticleCategory
         public ActionResult Index()
