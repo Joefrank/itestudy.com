@@ -87,6 +87,10 @@
     <Compile Include="Migrations\201805142131075_CourseCategoryChange.Designer.cs">
       <DependentUpon>201805142131075_CourseCategoryChange.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805162159309_CourseManagement.cs" />
+    <Compile Include="Migrations\201805162159309_CourseManagement.Designer.cs">
+      <DependentUpon>201805162159309_CourseManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SQL\StoredProcs\LogItem.sql" />
@@ -128,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201805142131075_CourseCategoryChange.resx">
       <DependentUpon>201805142131075_CourseCategoryChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805162159309_CourseManagement.resx">
+      <DependentUpon>201805162159309_CourseManagement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

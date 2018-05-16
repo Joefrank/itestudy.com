@@ -10,22 +10,24 @@ namespace elearning.model.DataModels
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int LessonID { get; set; }
+        public int Id { get; set; }
+        public int ChapterId { get; set; }
         [Required]
         [MinLength(5)]
-        public string title { get; set; }
+        public string Title { get; set; }
         [Required]
         [MinLength(25)]
-        public string resume { get; set; }
+        public string Content { get; set; }
         [Required]
         [MinLength(25)]
-        public string content { get; set; }
-        public DateTime dateCreated { get; set; }
-        public DateTime dateLastModified { get; set; }
-        public Boolean status { get; set; }
-        public int createdBy { get; set; }
-        public int lastModifiedBy { get; set; }
-        public int relatedChapterID { get; set; }
+        public string Overview { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateLastModified { get; set; }
+        public int Status { get; set; }
+        public int CreatedBy { get; set; }
+        public int LastModifiedBy { get; set; }
+        public int TutorialCount { get; set; }
+
         public virtual ICollection<Lesson> lessons { get; set; }
     }
 }

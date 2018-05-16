@@ -76,12 +76,14 @@
   <ItemGroup>
     <Compile Include="DataModels\ArticleCategory.cs" />
     <Compile Include="DataModels\Article.cs" />
+    <Compile Include="DataModels\ArticleLink.cs" />
     <Compile Include="DataModels\CourseCategory.cs" />
     <Compile Include="DataModels\CourseChapter.cs" />
     <Compile Include="DataModels\CourseModule.cs" />
     <Compile Include="DataModels\Course.cs" />
     <Compile Include="DataModels\EmailTemplate.cs" />
     <Compile Include="DataModels\Image.cs" />
+    <Compile Include="DataModels\Tutorial.cs" />
     <Compile Include="DataModels\Lesson.cs" />
     <Compile Include="DataModels\Log.cs" />
     <Compile Include="DataModels\User.cs" />
