@@ -1,0 +1,50 @@
+﻿@using elearning.model.DataModels
+
+@model IEnumerable<Course>
+
+@if (Model.Any())
+{
+    <div class="table100 ver2 m-b-110">
+        <table data-vertable="ver2">
+            <thead>
+                <tr class="row100 head">
+                    <th class="column100 column1" data-column="column1">Id</th>
+                    <th class="column100 column2" data-column="column2">Name</th>
+                    <th class="column100 column3" data-column="column3">Description</th>
+                    <th class="column100 column4" data-column="column4">Created On</th>
+                    <th class="column100 column5" data-column="column5">Created By</th>
+                    <th class="column100 column6" data-column="column6">Status</th>
+                    <th class="column100 column9" data-column="column9">Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var course in Model)
+                {
+                    <tr class="row100">
+                        <td class="column100 column1" data-column="column1">@course.Id</td>
+                        <td class="column100 column2" data-column="column2">@course.Title</td>
+                        <td class="column100 column3" data-column="column3">@course.Description</td>
+                        <td class="column100 column4" data-column="column4">@course.DateCreated.ToString("dd-MM-yyyy")</td>
+                        <td class="column100 column5" data-column="column5">@(course.Creator.Firstname + " " + course.Creator.Lastname)</td>
+                        <td class="column100 column6" data-column="column6">@course.Status</td>                       
+                        <td class="column100 column9" data-column="column9">
+                            <a href="/course/details/@course.Id">&nbsp; <i class="fa fa-edit"></i></a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>
+        There is no course in the database at the moment. Please create one by clicking on the button below.
+    </p>
+    
+}
+<div class="read-btn">
+    <br/>
+    <a class="btn btn-common" href="/course/create">Create Course <i class="fa fa-angle-right"></i></a>
+</div>

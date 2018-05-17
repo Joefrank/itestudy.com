@@ -51,46 +51,6 @@
   <ItemGroup>
     <Compile Include="ELearningContextCustomInitializer.cs" />
     <Compile Include="DataDbContext.cs" />
-    <Compile Include="Migrations\201804092136174_UpdateArticlesTable.cs" />
-    <Compile Include="Migrations\201804092136174_UpdateArticlesTable.Designer.cs">
-      <DependentUpon>201804092136174_UpdateArticlesTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804092204488_ArticleUpdates.cs" />
-    <Compile Include="Migrations\201804092204488_ArticleUpdates.Designer.cs">
-      <DependentUpon>201804092204488_ArticleUpdates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804112312154_ArticleDetailsUpdate.cs" />
-    <Compile Include="Migrations\201804112312154_ArticleDetailsUpdate.Designer.cs">
-      <DependentUpon>201804112312154_ArticleDetailsUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804112315125_ImagesDetails.cs" />
-    <Compile Include="Migrations\201804112315125_ImagesDetails.Designer.cs">
-      <DependentUpon>201804112315125_ImagesDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804112316380_ImagesDetails2.cs" />
-    <Compile Include="Migrations\201804112316380_ImagesDetails2.Designer.cs">
-      <DependentUpon>201804112316380_ImagesDetails2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804142321071_ImageFile.cs" />
-    <Compile Include="Migrations\201804142321071_ImageFile.Designer.cs">
-      <DependentUpon>201804142321071_ImageFile.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804172234493_UpdateImageTable.cs" />
-    <Compile Include="Migrations\201804172234493_UpdateImageTable.Designer.cs">
-      <DependentUpon>201804172234493_UpdateImageTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805131903425_MainImageLinkChange.cs" />
-    <Compile Include="Migrations\201805131903425_MainImageLinkChange.Designer.cs">
-      <DependentUpon>201805131903425_MainImageLinkChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805142131075_CourseCategoryChange.cs" />
-    <Compile Include="Migrations\201805142131075_CourseCategoryChange.Designer.cs">
-      <DependentUpon>201805142131075_CourseCategoryChange.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201805162159309_CourseManagement.cs" />
-    <Compile Include="Migrations\201805162159309_CourseManagement.Designer.cs">
-      <DependentUpon>201805162159309_CourseManagement.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SQL\StoredProcs\LogItem.sql" />
@@ -104,38 +64,6 @@
       <Project>{396f38e7-fd3c-49c5-aab6-d64fb62f1e6d}</Project>
       <Name>elearning.model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201804092136174_UpdateArticlesTable.resx">
-      <DependentUpon>201804092136174_UpdateArticlesTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804092204488_ArticleUpdates.resx">
-      <DependentUpon>201804092204488_ArticleUpdates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804112312154_ArticleDetailsUpdate.resx">
-      <DependentUpon>201804112312154_ArticleDetailsUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804112315125_ImagesDetails.resx">
-      <DependentUpon>201804112315125_ImagesDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804112316380_ImagesDetails2.resx">
-      <DependentUpon>201804112316380_ImagesDetails2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804142321071_ImageFile.resx">
-      <DependentUpon>201804142321071_ImageFile.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804172234493_UpdateImageTable.resx">
-      <DependentUpon>201804172234493_UpdateImageTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805131903425_MainImageLinkChange.resx">
-      <DependentUpon>201805131903425_MainImageLinkChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805142131075_CourseCategoryChange.resx">
-      <DependentUpon>201805142131075_CourseCategoryChange.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201805162159309_CourseManagement.resx">
-      <DependentUpon>201805162159309_CourseManagement.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

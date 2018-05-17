@@ -94,11 +94,13 @@
     <Compile Include="Implementation\ArticleService.cs" />
     <Compile Include="Implementation\BaseService.cs" />
     <Compile Include="Implementation\CourseCategoryService.cs" />
+    <Compile Include="Implementation\CourseService.cs" />
     <Compile Include="Implementation\ImageService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="Implementation\EmailTemplateService.cs" />
     <Compile Include="Interfaces\IArticleCatogoryService.cs" />
     <Compile Include="Interfaces\IArticleService.cs" />
+    <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="Interfaces\ICourseCategoryService.cs" />
     <Compile Include="Interfaces\IEmailTemplateService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />

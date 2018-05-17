@@ -85,7 +85,7 @@ namespace elearning.utils
             builder.RegisterType<CourseCategoryService>().As<ICourseCategoryService>();
             builder.RegisterType<ArticleService>().As<IArticleService>();
             builder.RegisterType<ImageService>().As<IImageService>();
-
+            builder.RegisterType<CourseService>().As<ICourseService>();
             return builder;
 
         }

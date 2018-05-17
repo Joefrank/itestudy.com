@@ -108,6 +108,7 @@
     <Compile Include="ViewModels\ActivatedUserVm.cs" />
     <Compile Include="ViewModels\ArticleCategoryVm.cs" />
     <Compile Include="ViewModels\CourseCategoryEditVm.cs" />
+    <Compile Include="ViewModels\CourseEditVm.cs" />
     <Compile Include="ViewModels\EditArticleVm.cs" />
     <Compile Include="ViewModels\AricleListVm.cs" />
     <Compile Include="ViewModels\CategoryListVm.cs" />

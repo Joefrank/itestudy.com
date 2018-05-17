@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using elearning.data;
 using elearning.model.DataModels;
+using elearning.model.Enums;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
 using System;
@@ -64,8 +65,8 @@ namespace elearning.services.Implementation
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.CourseCatogories
-                        .Include("Creator").ToList();
+                    returnList = context.CourseCatogories.Include("Creator")
+                        .Where(x => x.Status == (int)CourseCategoryStatus.Published).ToList();
                 }
 
                 return returnList;
