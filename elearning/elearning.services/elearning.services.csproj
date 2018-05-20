@@ -90,6 +90,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C:\Projects\Websites\Personal\itestudy.com\elearning\elearning.services\Implementation\CourseChapterService.cs" />
+    <Compile Include="C:\Projects\Websites\Personal\itestudy.com\elearning\elearning.services\Interfaces\ICourseChapterService.cs" />
     <Compile Include="Implementation\ArticleCatogoryService.cs" />
     <Compile Include="Implementation\ArticleService.cs" />
     <Compile Include="Implementation\BaseService.cs" />

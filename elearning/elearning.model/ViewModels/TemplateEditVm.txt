@@ -1,0 +1,11 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace elearning.model.ViewModels
+{
+    public class [***]EditVm
+    {     
+        [***code***]
+        public bool ShowError { get; set; }
+    }
+}
