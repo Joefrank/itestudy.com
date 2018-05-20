@@ -1,0 +1,184 @@
+﻿
+using AutoMapper;
+using elearning.data;
+using elearning.model.DataModels;
+using elearning.model.Enums;
+using elearning.model.ViewModels;
+using elearning.services.Implementation;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace elearning.services.Interfaces
+{
+    public class [***]Service : BaseService, I[***]Service
+    {
+
+        public [***] Add[***]([***]EditVm model)
+        {
+            try
+            {
+                var [***] = Mapper.Map<[***]EditVm, [***]>(model);
+                [***].Creator = UserService.GetUserById([***].CreatedBy);
+
+                using (var context = new DataDbContext())
+                {
+                    context.[***]s.Add([***]);
+                    context.SaveChanges();
+                }
+
+                return [***];
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public IEnumerable<[***]> Find[***](string keyowrd)
+        {
+            try
+            {
+                IEnumerable<[***]> returnList;
+                var key = keyowrd.ToLower();
+
+                using (var context = new DataDbContext())
+                {
+                    returnList = context.[***]s.
+                        Where(ac => ac.Title.ToLower().Contains(key) 
+                        || ac.ShortDescription.ToLower().Contains(key)
+                        || ac.Description.ToLower().Contains(key));
+                }
+
+                return returnList;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public List<[***]> GetActive[***]s()
+        {
+            try
+            {
+                List<[***]> returnList;
+
+                using (var context = new DataDbContext())
+                {
+                    returnList = context.[***]s.Include("Creator")
+                        .Where(x => x.Status == (int)[***]Status.Published).ToList();
+                }
+
+                return returnList;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public List<[***]> GetAll()
+        {
+            try
+            {
+                List<[***]> returnList;
+
+                using (var context = new DataDbContext())
+                {
+                    returnList = context.[***]s.Include("Creator").ToList();
+                }
+
+                return returnList;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public List<[***]> GetAllSimple()
+        {
+            try
+            {
+                List<[***]> returnList;
+
+                using (var context = new DataDbContext())
+                {
+                    returnList = context.[***]s.ToList();
+                }
+
+                return returnList;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public [***] Get[***](int [***]Id)
+        {
+            [***] [***]=null;
+
+            using (var context = new DataDbContext())
+            {
+                [***] = context.[***]s.FirstOrDefault(x => x.Id == [***]Id);
+            }
+
+            return [***];
+        }
+
+        public bool Update([***]EditVm model)
+        {
+            try
+            {
+                using (var context = new DataDbContext())
+                {
+                    var [***] = context.[***]s.FirstOrDefault(x => x.Id == model.Id);
+                    [***].Title = model.Title;
+                    [***].ShortDescription = model.ShortDescription;
+                    [***].Description = model.Description;
+                    [***].MainImageLink = model.MainImageLink;
+                    [***].YoutubeLink = model.YoutubeLink;
+                    [***].Status = model.Status;
+                    [***].LastModified = DateTime.Now;
+                    [***].LastModifiedBy = model.LastModifiedBy;
+                    [***].LastModifier = context.Users.FirstOrDefault(x => x.Identity == model.LastModifiedBy.Value);
+
+                    context.SaveChanges();
+                }
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return false;
+            }
+        }
+
+        public bool Delete(int [***]Id)
+        {
+            try
+            {
+                using (var context = new DataDbContext())
+                {
+                    var [***] = context.[***]s.FirstOrDefault(x => x.Id == [***]Id);
+                    context.[***]s.Remove([***] ?? throw new InvalidOperationException());
+                    context.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return false;
+            }
+        }
+    }
+}

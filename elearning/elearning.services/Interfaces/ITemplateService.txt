@@ -1,0 +1,21 @@
+﻿
+using elearning.model.DataModels;
+using elearning.model.ViewModels;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace elearning.services.Interfaces
+{
+    public interface I[***]Service
+    {
+        [***] Add[***]([***]EditVm model);
+        IEnumerable<[***]> Find[***](string keyowrd);
+        List<[***]> GetActive[***]s();
+        List<[***]> GetAll();
+        List<[***]> GetAllSimple();
+        [***] Get[***](int [***]Id);
+        bool Update([***]EditVm model);
+        bool Delete(int [***]Id);
+    }
+}

@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "elearning.coding", "elearni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMCommon", "..\..\..\..\Apps\CMCommonLibrary\CMCommon\CMCommon.csproj", "{86D58F3B-A1C2-4DB2-81AA-E4B43356D644}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCCodeGenerator", "..\..\..\..\Apps\MVCCodeGenerator\MVCCodeGenerator\MVCCodeGenerator.csproj", "{800CB818-6174-4E82-974F-68F095B30E16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{86D58F3B-A1C2-4DB2-81AA-E4B43356D644}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86D58F3B-A1C2-4DB2-81AA-E4B43356D644}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86D58F3B-A1C2-4DB2-81AA-E4B43356D644}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800CB818-6174-4E82-974F-68F095B30E16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800CB818-6174-4E82-974F-68F095B30E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800CB818-6174-4E82-974F-68F095B30E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800CB818-6174-4E82-974F-68F095B30E16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

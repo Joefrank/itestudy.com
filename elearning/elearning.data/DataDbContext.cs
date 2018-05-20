@@ -1,5 +1,4 @@
-﻿using elearning.data.Migrations;
-using elearning.model.DataModels;
+﻿using elearning.model.DataModels;
 using System.Data.Entity;
 
 namespace elearning.data
@@ -26,7 +25,7 @@ namespace elearning.data
         public virtual DbSet<Log> Logs { get; set; }
         public virtual DbSet<EmailTemplate> EmailTemplates { get; set; }
         public virtual DbSet<Image> Images { get; set; }
-
+        //***next_entry_above***
         #endregion
 
     }

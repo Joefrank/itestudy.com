@@ -94,6 +94,7 @@
     <Compile Include="Implementation\ArticleService.cs" />
     <Compile Include="Implementation\BaseService.cs" />
     <Compile Include="Implementation\CourseCategoryService.cs" />
+    <Content Include="Implementation\TemplateService.txt" />
     <Compile Include="Implementation\CourseService.cs" />
     <Compile Include="Implementation\ImageService.cs" />
     <Compile Include="Implementation\UserService.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="Interfaces\ICourseCategoryService.cs" />
     <Compile Include="Interfaces\IEmailTemplateService.cs" />
     <Compile Include="Interfaces\IImageService.cs" />
+    <Content Include="Interfaces\ITemplateService.txt" />
     <Compile Include="Interfaces\IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
