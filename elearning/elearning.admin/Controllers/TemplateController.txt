@@ -1,0 +1,69 @@
+﻿
+using AutoMapper;
+using elearning.model.DataModels;
+using elearning.model.ViewModels;
+using elearning.services.Interfaces;
+using System;
+using System.Web.Mvc;
+
+namespace elearning.admin.Controllers
+{
+    public class [***]Controller : BaseAdminController
+    {
+        public I[***]Service [***]Service { get; set; }
+
+        // GET: [***]s
+        public ActionResult Index()
+        {
+            var [***]List = [***]Service.GetAll();
+            return View([***]List);
+        }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View(new [***]EditVm());
+        }
+
+        [HttpPost]
+        public ActionResult Create([***]EditVm model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+             model.CreatedBy = CurrentUserDb.Identity;
+            model.DateCreated = DateTime.Now;
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Details(int id)
+        {
+            var [***] = [***]Service.Get[***](id);
+
+            var [***]Vm = Mapper.Map<[***], [***]EditVm>([***]);
+
+            return View([***]Vm);
+        }
+
+        [HttpPost]
+        public ActionResult SaveDetails([***]EditVm model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Details", model);
+            }
+
+            model.LastModified = DateTime.Now;
+            model.LastModifiedBy = CurrentUserDb.Identity;
+
+            //save the details here.
+            [***]Service.Update(model);
+
+            return Redirect("~/[***]");
+        }
+    }
+}

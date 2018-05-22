@@ -1,6 +1,6 @@
 
         /*****************************************************************
-        * Code Generated at 20/05/2018 23:45:39
+        * Code Generated at 22/05/2018 14:27:30
         * By Code MVCCodeGenerator
         *
         *
@@ -54,9 +54,9 @@ namespace elearning.services.Interfaces
                 using (var context = new DataDbContext())
                 {
                     returnList = context.CourseChapters.
-                        Where(ac => ac.Title.ToLower().Contains(key) 
-                        || ac.ShortDescription.ToLower().Contains(key)
-                        || ac.Description.ToLower().Contains(key));
+                         Where(ac =>  ac.Title.ToLower().Contains(key)  || 
+                         ac.Description.ToLower().Contains(key) )
+                        ;
                 }
 
                 return returnList;
@@ -76,8 +76,8 @@ namespace elearning.services.Interfaces
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.CourseChapters.Include("Creator")
-                        .Where(x => x.Status == (int)CourseChapterStatus.Published).ToList();
+                    returnList = context.CourseChapters.Include("Creator").ToList();//replace with active query
+                        //.Where(x => x.Status == (int)CourseChapterStatus.Published).ToList();
                 }
 
                 return returnList;
@@ -148,15 +148,13 @@ namespace elearning.services.Interfaces
                 using (var context = new DataDbContext())
                 {
                     var CourseChapter = context.CourseChapters.FirstOrDefault(x => x.Id == model.Id);
-                    CourseChapter.Title = model.Title;
-                    CourseChapter.ShortDescription = model.ShortDescription;
-                    CourseChapter.Description = model.Description;
-                    CourseChapter.MainImageLink = model.MainImageLink;
-                    CourseChapter.YoutubeLink = model.YoutubeLink;
-                    CourseChapter.Status = model.Status;
-                    CourseChapter.LastModified = DateTime.Now;
-                    CourseChapter.LastModifiedBy = model.LastModifiedBy;
-                    CourseChapter.LastModifier = context.Users.FirstOrDefault(x => x.Identity == model.LastModifiedBy.Value);
+                     CourseChapter.Title = model.Title;
+ CourseChapter.Description = model.Description;
+ CourseChapter.StatusId = model.StatusId;
+ CourseChapter.LastModifiedBy = model.LastModifiedBy;
+ CourseChapter.LessonCount = model.LessonCount;
+ CourseChapter.TutorialCount = model.TutorialCount;
+
 
                     context.SaveChanges();
                 }
