@@ -1,31 +1,34 @@
 
         /*****************************************************************
-        * Code Generated at 20/05/2018 23:56:11
+        * Code Generated at 22/05/2018 14:27:30
         * By Code MVCCodeGenerator
         *
         *
         ******************************************************************/
         
 using System;
-using System.Collections;
 using System.ComponentModel.DataAnnotations;
 
 namespace elearning.model.ViewModels
 {
     public class CourseChapterEditVm
     {     
-         public Int32 Id{get;set;}
- public Int32 CourseId{get;set;}
- public String Title{get;set;}
- public String Description{get;set;}
+         public int Id{get;set;}
+[Required(ErrorMessage="CourseId is required!" )]
+ public int CourseId{get;set;}
+[Required(ErrorMessage="Title is required!" )]
+[MinLength(5)]
+ public string Title{get;set;}
+[Required(ErrorMessage="Description is required!" )]
+[MinLength(25)]
+ public string Description{get;set;}
  public DateTime DateCreated{get;set;}
  public DateTime DateLastModified{get;set;}
- public Int32 StatusId{get;set;}
- public Int32 CreatedBy{get;set;}
- public Int32 LastModifiedBy{get;set;}
- public Int32 LessonCount{get;set;}
- public Int32 TutorialCount{get;set;}
- public ICollection lessons{get;set;}
+ public int StatusId{get;set;}
+ public int CreatedBy{get;set;}
+ public int LastModifiedBy{get;set;}
+ public int LessonCount{get;set;}
+ public int TutorialCount{get;set;}
 
         public bool ShowError { get; set; }
     }

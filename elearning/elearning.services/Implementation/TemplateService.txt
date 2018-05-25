@@ -45,10 +45,7 @@ namespace elearning.services.Interfaces
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.[***]s.
-                        Where(ac => ac.Title.ToLower().Contains(key) 
-                        || ac.ShortDescription.ToLower().Contains(key)
-                        || ac.Description.ToLower().Contains(key));
+                    returnList = context.[***]s[***SearchQuery***];
                 }
 
                 return returnList;
@@ -68,8 +65,8 @@ namespace elearning.services.Interfaces
 
                 using (var context = new DataDbContext())
                 {
-                    returnList = context.[***]s.Include("Creator")
-                        .Where(x => x.Status == (int)[***]Status.Published).ToList();
+                    returnList = context.[***]s.Include("Creator").ToList();//replace with active query
+                        //.Where(x => x.Status == (int)[***]Status.Published).ToList();
                 }
 
                 return returnList;
@@ -140,15 +137,7 @@ namespace elearning.services.Interfaces
                 using (var context = new DataDbContext())
                 {
                     var [***] = context.[***]s.FirstOrDefault(x => x.Id == model.Id);
-                    [***].Title = model.Title;
-                    [***].ShortDescription = model.ShortDescription;
-                    [***].Description = model.Description;
-                    [***].MainImageLink = model.MainImageLink;
-                    [***].YoutubeLink = model.YoutubeLink;
-                    [***].Status = model.Status;
-                    [***].LastModified = DateTime.Now;
-                    [***].LastModifiedBy = model.LastModifiedBy;
-                    [***].LastModifier = context.Users.FirstOrDefault(x => x.Identity == model.LastModifiedBy.Value);
+                    [***AllEdit***]
 
                     context.SaveChanges();
                 }
