@@ -38,6 +38,8 @@ namespace elearning.admin.Models
                 .ForMember(g => g.DateCreated, opt => opt.MapFrom(source => DateTime.Now));
             CreateMap<CourseCategory, CourseCategoryEditVm>();
 
+            /***Mapping_Injection***/
+
         }
     }
 }
