@@ -7,7 +7,7 @@
     <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 }
 
-@Html.Partial("~/Views/Shared/Forms/_[***]Edit.cshtml")
+@Html.Partial("~/Views/Shared/Forms/_[***Model***]Edit.cshtml")
 
 
 @section BottomScripts{
