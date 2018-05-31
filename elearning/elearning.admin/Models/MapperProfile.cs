@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using elearning.model.DataModels;
 using elearning.model.ViewModels;
 using System;
@@ -37,7 +37,8 @@ namespace elearning.admin.Models
             CreateMap<CourseCategoryEditVm, CourseCategory>()
                 .ForMember(g => g.DateCreated, opt => opt.MapFrom(source => DateTime.Now));
             CreateMap<CourseCategory, CourseCategoryEditVm>();
-
+            CreateMap<CourseChapter, CourseChapterEditVm>();
+            CreateMap<CourseChapterEditVm, CourseChapter>();
             /***Mapping_Injection***/
 
         }

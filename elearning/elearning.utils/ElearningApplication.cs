@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Configuration;
 using System.Web;
 using Autofac;
@@ -86,6 +86,7 @@ namespace elearning.utils
             builder.RegisterType<ArticleService>().As<IArticleService>();
             builder.RegisterType<ImageService>().As<IImageService>();
             builder.RegisterType<CourseService>().As<ICourseService>();
+            builder.RegisterType<CourseChapterService>().As<ICourseChapterService>();
             /***Dependency_Injection***/
 
             return builder;

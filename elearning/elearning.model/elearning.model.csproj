@@ -85,6 +85,7 @@
     <Compile Include="Enums\ArticleRelatedObjectType.cs" />
     <Compile Include="Enums\ArticleType.cs" />
     <Compile Include="Enums\CourseCategoryStatus.cs" />
+    <Compile Include="Enums\CourseChapterStatus.cs" />
     <Compile Include="Enums\CourseStatus.cs" />
     <Compile Include="Enums\EmailTemplateType.cs" />
     <Compile Include="Enums\Environment.cs" />

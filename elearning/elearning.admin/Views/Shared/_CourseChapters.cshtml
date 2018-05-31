@@ -1,0 +1,41 @@
+﻿@using elearning.model.DataModels
+@model IEnumerable<CourseChapter>
+
+<div class="table100 ver2 m-b-110">
+    <table data-vertable="ver2">
+        <thead>
+            <tr class="row100 head">
+                <th class="column100 column1" data-column="column1">Id</th>
+                <th class="column100 column2" data-column="column2">Title</th>
+                <th class="column100 column3" data-column="column3">Firstname</th>
+                <th class="column100 column4" data-column="column4">Lastname</th>
+                <th class="column100 column5" data-column="column5">Registered</th>
+                <th class="column100 column6" data-column="column6">Email</th>
+                <th class="column100 column7" data-column="column7">Type</th>
+                <th class="column100 column8" data-column="column8">Active</th>
+                <th class="column100 column9" data-column="column9">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @*@foreach (var user in Model)
+            {
+                <tr class="row100">
+                    <td class="column100 column1" data-column="column1">@user.Identity</td>
+                    <td class="column100 column2" data-column="column2">@user.Title</td>
+                    <td class="column100 column3" data-column="column3">@user.Firstname</td>
+                    <td class="column100 column4" data-column="column4">@user.Lastname</td>
+                    <td class="column100 column5" data-column="column5">@user.DateRegistered.ToString("dd-MM-yyyy")</td>
+                    <td class="column100 column6" data-column="column6">@user.Email</td>
+                    <td class="column100 column7" data-column="column7">@user.Type</td>
+                    <td class="column100 column8" data-column="column8">@(user.Active ? "Yes" : "No")</td>
+                    <td class="column100 column9" data-column="column9">
+                        <a href="/users/details/@user.Id">&nbsp; <i class="fa fa-edit"></i></a>
+                    </td>
+                </tr>
+            }*@
+
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,15 @@
+@model elearning.model.ViewModels.CourseChapterEditVm
+
+<h2 class="medium-title">Edit CourseChapterEditVm</h2>
+
+<!-- Form -->
+@section HeaderScripts{
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
+}
+
+@Html.Partial("~/Views/Shared/Forms/_CourseChapterEdit.cshtml")
+
+@section BottomScripts{
+    <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
+}
