@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace elearning.services.Interfaces
 {
-    public interface ICourseCatogoryService
+    public interface IArticleCategoryService
     {
         ArticleCategory AddCategory(ArticleCategoryVm model);       
         IEnumerable<ArticleCategory> FindCategory(string keyowrd);

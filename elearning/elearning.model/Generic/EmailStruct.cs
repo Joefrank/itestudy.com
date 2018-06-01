@@ -1,5 +1,5 @@
 ﻿
-namespace Common.Model
+namespace elearning.model.Generic
 {
     public class EmailStruct
     {

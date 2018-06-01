@@ -10,7 +10,7 @@ namespace elearning.admin.Helpers
 {
     public class ArticleHelper
     {
-        public static ICourseCatogoryService CategoryService { get { return DependencyResolver.Current.GetService<ICourseCatogoryService>(); } }
+        public static IArticleCategoryService CategoryService => DependencyResolver.Current.GetService<IArticleCategoryService>();
 
         public static List<GlossaryVm> GetCategoryList()
         {

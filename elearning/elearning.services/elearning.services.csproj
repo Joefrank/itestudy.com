@@ -80,7 +80,7 @@
   <ItemGroup>
     <Compile Include="C:\projects\Websites\Personal\itestudy.com\elearning\elearning.services\Implementation\CourseChapterService.cs" />
     <Compile Include="C:\projects\Websites\Personal\itestudy.com\elearning\elearning.services\Interfaces\ICourseChapterService.cs" />
-    <Compile Include="Implementation\ArticleCatogoryService.cs" />
+    <Compile Include="Implementation\ArticleCategoryService.cs" />
     <Compile Include="Implementation\ArticleService.cs" />
     <Compile Include="Implementation\BaseService.cs" />
     <Compile Include="Implementation\CourseCategoryService.cs" />
@@ -89,7 +89,7 @@
     <Compile Include="Implementation\ImageService.cs" />
     <Compile Include="Implementation\UserService.cs" />
     <Compile Include="Implementation\EmailTemplateService.cs" />
-    <Compile Include="Interfaces\IArticleCatogoryService.cs" />
+    <Compile Include="Interfaces\IArticleCategoryService.cs" />
     <Compile Include="Interfaces\IArticleService.cs" />
     <Compile Include="Interfaces\ICourseService.cs" />
     <Compile Include="Interfaces\ICourseCategoryService.cs" />

@@ -329,6 +329,7 @@
     <Content Include="scripts\htmleditor\summernote\lang\summernote-zh-TW.js" />
     <Content Include="scripts\htmleditor\summernote\summernote.min.js" />
     <Content Include="scripts\site\article.js" />
+    <Content Include="scripts\site\course.js" />
     <Content Include="scripts\site\myaccount.js" />
     <Content Include="scripts\site\register-login.js" />
     <Content Include="scripts\table\main.js" />
@@ -358,6 +359,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ArticleHelper.cs" />
+    <Compile Include="Helpers\CourseHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\CustomAttributes\CustomAuthAttribute.cs" />
     <Compile Include="Models\MapperProfile.cs" />
@@ -437,6 +439,7 @@
     <Content Include="Views\CourseChapter\Index.cshtml" />
     <Content Include="Views\Shared\Forms\_CourseChapterEdit.cshtml" />
     <Content Include="Views\Shared\_CourseChapters.cshtml" />
+    <Content Include="Views\Shared\Forms\_CourseEdit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

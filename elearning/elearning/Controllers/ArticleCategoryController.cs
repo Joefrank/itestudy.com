@@ -8,7 +8,7 @@ namespace elearning.Controllers
     [Route("ArticleCategory")]
     public class ArticleCategoryController : Controller
     {
-        public ICourseCatogoryService IArticleCatogoryService { get; set; }
+        public IArticleCategoryService ArticleCatogoryService { get; set; }
         // GET: ArticleCategory
         public ActionResult Index()
         {
@@ -19,7 +19,7 @@ namespace elearning.Controllers
         [HttpPost]
         public ActionResult AddArticleCategory(ArticleCategoryVm model)
         {
-            var category = IArticleCatogoryService.AddCategory(model);
+            var category = ArticleCatogoryService.AddCategory(model);
             return View(category);
         }
 

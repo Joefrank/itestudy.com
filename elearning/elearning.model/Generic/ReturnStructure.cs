@@ -1,7 +1,7 @@
 ﻿
 using Common.Enums;
 
-namespace Common.Model
+namespace elearning.model.Generic
 {
     public class ReturnStructure
     {

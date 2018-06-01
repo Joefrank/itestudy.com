@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace elearning.model.ViewModels
@@ -20,9 +21,11 @@ namespace elearning.model.ViewModels
         public DateTime DateCreated { get; set; }
         public DateTime? LastModified { get; set; }
         public int? LastModifiedBy { get; set; }
+        [Required]
         public int CategoryId { get; set; }
         public int CreatedBy { get; set; }
 
+        public List<GlossaryVm> CourseCategories { get; set; }
         public bool ShowError { get; set; }
     }
 }

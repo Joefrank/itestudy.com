@@ -9,7 +9,7 @@ using elearning.model.DataModels;
 
 namespace elearning.services.Implementation
 {
-    public class ArticleCatogoryService : BaseService, ICourseCatogoryService 
+    public class ArticleCategoryService : BaseService, IArticleCategoryService
     {
        
         // add new article category

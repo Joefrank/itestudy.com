@@ -4,13 +4,16 @@ using elearning.model.DataModels;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
+using elearning.admin.Helpers;
 
 namespace elearning.admin.Controllers
 {
     public class CourseController : BaseAdminController
     {
         public ICourseService CourseService { get; set; }
+        public ICourseCategoryService CourseCategoryService { get; set; }
 
         // GET: Courses
         public ActionResult Index()
@@ -22,10 +25,19 @@ namespace elearning.admin.Controllers
         [HttpGet]
         public ActionResult Create()
         {
-            return View(new CourseEditVm());
+           // var categories = CourseCategoryService.GetActiveCategories();
+
+            var model = new CourseEditVm
+            {
+                CourseCategories = CourseHelper.GetActiveCategoryList()
+            };
+
+            return View(model);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseEditVm model)
         {
             if (!ModelState.IsValid)
@@ -33,18 +45,20 @@ namespace elearning.admin.Controllers
                 return View(model);
             }
 
-            //model.CreatedBy = CurrentUserDb.Identity;
-            //model.Status = (int)elearning.model.Enums.CourseCategoryStatus.Published;
+            model.CreatedBy = CurrentUserDb.Identity;
+            model.DateCreated = DateTime.Now;
+            model.Status = (int)elearning.model.Enums.CourseCategoryStatus.Draft;
 
-            //var category = CourseCategorySvc.AddCategory(model);
+            var course = CourseService.AddCourse(model);
 
-            //if (category != null && category.Id > 0)
-            //{
-            //    return Redirect("~/coursecategory/");
-            //}
+            if (course != null && course.Id > 0)
+            {
+                return Redirect("~/course");
+            }
 
-            //ModelState.AddModelError("Failed Category Add", "Sorry could not add category");
-            //model.ShowError = true;
+            ModelState.AddModelError("Failed Course Add", "Sorry could not add course");
+            model.ShowError = true;
+
             return View(model);
         }
 
@@ -74,5 +88,6 @@ namespace elearning.admin.Controllers
 
             return Redirect("~/course");
         }
+
     }
 }

@@ -16,7 +16,7 @@
 @using (Html.BeginForm(actionEditName, "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
 {
     @Html.ValidationSummary()
-
+    @Html.AntiForgeryToken()
     @Html.HiddenFor(x => x.MainImageLink)
     @Html.HiddenFor(x => x.ArticleId)
 

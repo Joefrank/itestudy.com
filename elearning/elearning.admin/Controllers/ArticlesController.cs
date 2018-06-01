@@ -28,6 +28,8 @@ namespace elearning.admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(EditArticleVm model)
         {
             if (!ModelState.IsValid)
