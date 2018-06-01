@@ -149,6 +149,8 @@
     <Content Include="Content\css\table\main.css" />
     <Content Include="Content\css\table\util.css" />
     <Content Include="Content\css\vendor\animate\animate.css" />
+    <Content Include="Content\css\vendor\card-layout\material-cards-auto-height.css" />
+    <Content Include="Content\css\vendor\card-layout\material-cards.css" />
     <Content Include="Content\css\vendor\perfect-scrollbar\perfect-scrollbar.css" />
     <Content Include="Content\css\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
     <Content Include="Content\css\vendor\select2\select2.css" />
@@ -433,6 +435,11 @@
     <Content Include="Views\Template\Create.txt" />
     <Content Include="Views\Template\Details.txt" />
     <Content Include="Views\Template\Index.txt" />
+    <Content Include="Content\css\vendor\card-layout\gm-variables.less" />
+    <Content Include="Content\css\vendor\card-layout\material-cards-auto-height.less" />
+    <Content Include="Content\css\vendor\card-layout\material-cards.less" />
+    <Content Include="Content\css\vendor\card-layout\material-color.less" />
+    <Content Include="Content\css\vendor\card-layout\mixin.less" />
     <None Include="packages.config" />
     <Content Include="Views\CourseChapter\Create.cshtml" />
     <Content Include="Views\CourseChapter\Details.cshtml" />

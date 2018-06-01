@@ -33,7 +33,8 @@ namespace elearning.admin.Models
                 .ForMember(g => g.ArticleId, opt => opt.MapFrom(source => source.Id));
 
             CreateMap<Image, ImageVm>()
-                .ForMember(g => g.ImageUrl, opt => opt.MapFrom(source => string.Format("{0}{1}/{2}", siteRoot , imageUpload, source.Identifier + source.Extension)));
+                .ForMember(g => g.ImageUrl, opt => opt.MapFrom(source =>
+                    $"{siteRoot}{imageUpload}/{source.Identifier + source.Extension}"));
             CreateMap<CourseCategoryEditVm, CourseCategory>()
                 .ForMember(g => g.DateCreated, opt => opt.MapFrom(source => DateTime.Now));
             CreateMap<CourseCategory, CourseCategoryEditVm>();
