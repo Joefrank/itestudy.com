@@ -68,11 +68,13 @@ namespace elearning.admin.Controllers
             var course = CourseService.GetCourse(id);
 
             var categoryVm = Mapper.Map<Course, CourseEditVm>(course);
-
+            categoryVm.CourseCategories = CourseHelper.GetActiveCategoryList();
             return View(categoryVm);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveDetails(CourseEditVm model)
         {
             if (!ModelState.IsValid)

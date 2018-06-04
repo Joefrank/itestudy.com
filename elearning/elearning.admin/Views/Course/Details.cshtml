@@ -1,1 +1,27 @@
 ﻿
+@model elearning.model.ViewModels.CourseEditVm
+
+<h2 class="medium-title">Course Edit</h2>
+<!-- Form -->
+
+@section HeaderScripts{
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
+}
+
+
+@Html.Partial("Forms/_CourseEdit")
+
+
+@section BottomScripts{
+
+    <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
+
+    <script>
+        var MaxFileUpload = 0;
+        var YoutubePreviewId = "youtubepreview";
+        var YoutubeSourceCtrlId = "YoutubeLink";
+    </script>
+
+    <script src="~/scripts/site/course.js"></script>
+}

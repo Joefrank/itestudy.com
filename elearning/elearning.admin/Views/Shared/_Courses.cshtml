@@ -10,9 +10,8 @@
             foreach (var course in Model)
              {
                  <div class="col-md-4 col-sm-6 col-xs-12">
-                     <article class="material-card Teal">
-                         <h2>
-                             @*<span>Edward Norton</span>*@
+                     <article class="material-card Teal mc-active">
+                         <h2>                            
                              <strong>
                                  <i class="fa fa-fw fa-star"></i>
                                  @course.Title
@@ -26,14 +25,15 @@
                                 @Html.Raw(course.ShortDescription)
                              </div>
                          </div>
-                         <a class="mc-btn-action">
-                             <i class="fa fa-bars"></i>
+                         <a class="mc-btn-action" href="~/course/details/@course.Id">
+                             <i class="fa fa-edit"></i>
                          </a>
                          <div class="mc-footer">
                              <h4>
-                                 @course.ChapterCount Chapter(s)
+                                 @course.ChapterCount Chapter(s) - 
+                                 @course.LessonCount  Lesson(s)
                              </h4>
-                             <a class="fa fa-edit" href="~/course/details/@course.Id">&nbsp;</a>
+                             
                          </div>
                      </article>
                  </div>

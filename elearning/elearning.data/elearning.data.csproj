@@ -49,10 +49,6 @@
   <ItemGroup>
     <Compile Include="ELearningContextCustomInitializer.cs" />
     <Compile Include="DataDbContext.cs" />
-    <Compile Include="Migrations\201806010945485_Update01062018.cs" />
-    <Compile Include="Migrations\201806010945485_Update01062018.Designer.cs">
-      <DependentUpon>201806010945485_Update01062018.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Content Include="SQL\StoredProcs\LogItem.sql" />
@@ -66,11 +62,6 @@
       <Project>{396f38e7-fd3c-49c5-aab6-d64fb62f1e6d}</Project>
       <Name>elearning.model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806010945485_Update01062018.resx">
-      <DependentUpon>201806010945485_Update01062018.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
