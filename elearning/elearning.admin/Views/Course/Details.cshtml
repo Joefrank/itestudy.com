@@ -1,6 +1,13 @@
 ﻿
 @model elearning.model.ViewModels.CourseEditVm
+@using elearning.model.ViewModels
 
+@{
+    var showFileUpload = (Model.MainImageLink == null || Model.MainImageLink == Guid.Empty);
+    var mainImageHtml = (Model.MainImageLink != null && Model.MainImageLink.HasValue) ?
+            "<img src=\"" + Model.MainImage.ImageUrl + "\" alt=\"" + Model.MainImage.Name + "\" />" : "";    
+}
+<h1>Breadcrumb needed............</h1>
 <h2 class="medium-title">Course Edit</h2>
 <!-- Form -->
 
@@ -8,6 +15,41 @@
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 }
+
+    <div class="form-group">
+        <!-- chapters -->
+        <h4>Course Chapters</h4>
+        @if (Model.CourseChapterCount > 0)
+        {
+            <a href="/coursechapter/getchapters/@Model.Id" title="View all chapters">@Model.CourseChapterCount chapter(s)</a> 
+        }
+        else
+        {
+            <p class="validation-summary-errors">
+                There are no chapters assoiated with this course.
+            </p>
+        }
+
+            <p>
+                <br />
+                <a class="btn btn-common" href="/coursechapter/create/@Model.Id">Add Chapter <i class="fa fa-angle-right"></i></a>
+                <br />
+            </p>
+    </div>
+
+<div id="fileUpload" class="form-group" style="display:@(showFileUpload? "block" : "none")">
+    @Html.Partial("_FileUpload", Model.FileModel)
+</div>
+
+<div id="fileAlternative" class="form-group" style="display:@(showFileUpload? "none" : "block")">
+    @Html.Raw(mainImageHtml)
+
+    <div class="form-group">
+        <p>
+            <a href="#" onclick="return ShowFileUpload('fileUpload','fileAlternative');">Edit Image</a>
+        </p>
+    </div>
+</div>
 
 
 @Html.Partial("Forms/_CourseEdit")
@@ -18,7 +60,7 @@
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
 
     <script>
-        var MaxFileUpload = 0;
+        var MaxFileUpload = @Model.FileModel.MaxFileUpload;
         var YoutubePreviewId = "youtubepreview";
         var YoutubeSourceCtrlId = "YoutubeLink";
     </script>

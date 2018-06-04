@@ -23,10 +23,10 @@ namespace elearning.model.ViewModels
          [MinLength(25, ErrorMessage = "Description is too short - at least 25 characters.")]
          public string Description{get;set;}
          public DateTime DateCreated{get;set;}
-         public DateTime DateLastModified{get;set;}
+         public DateTime? DateLastModified{get;set;}
          public int StatusId{get;set;}
          public int CreatedBy{get;set;}
-         public int LastModifiedBy{get;set;}
+         public int? LastModifiedBy{get;set;}
          public int LessonCount{get;set;}
          public int TutorialCount{get;set;}
          public bool ShowError { get; set; }

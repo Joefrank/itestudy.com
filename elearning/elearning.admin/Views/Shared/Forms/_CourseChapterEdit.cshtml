@@ -1,1 +1,36 @@
-﻿
+﻿@model elearning.model.ViewModels.CourseChapterEditVm
+@using elearning.admin.Helpers;
+@using elearning.model.Enums;
+
+@{
+    var actionEditName = Model.Id > 0 ? "SaveDetails" : "Create";
+    var editLabel = Model.Id > 0 ? "Save" : "Create";
+    var statusList = GenericHelper.GetGlossaryList<CourseChapterStatus>();
+}
+
+@using (Html.BeginForm(actionEditName, "CourseChapter", FormMethod.Post, new { id = "frmCourse", name = "frmCourse" }))
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.Id)
+    @Html.HiddenFor(x => x.CourseId)
+
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Chapter Title" })
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.DropDownListFor(x => x.StatusId, new SelectList(statusList, "Id", "Name"), "--Select Status--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <textarea id="Description" name="Description">@Model.Description</textarea>
+        @Html.ValidationMessageFor(model => model.Description, "Description", new { @class = "text-danger" })
+    </div>
+    <button type="submit" class="btn btn-common">@editLabel Chapter</button>
+
+}
+

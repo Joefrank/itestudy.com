@@ -6,6 +6,7 @@ using elearning.model.DataModels;
 using elearning.model.Enums;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
+using elearning.utils.Helpers;
 
 namespace elearning.admin.Controllers
 {
@@ -90,15 +91,7 @@ namespace elearning.admin.Controllers
 
         private EditArticleVm GetFileUploadModel(EditArticleVm articleVm)
         {
-            articleVm.FileModel = new FileUploadVm
-            {
-                MaxFileUpload = 1,
-                PopupTitle = "Image Upload",
-                ParallelUploads = 1,
-                MaxFileSize = 20,
-                ImageIdCtrl = "MainImageLink"
-            };
-
+            articleVm.FileModel = FileUploadHelper.GetGenericFileUploadModel();
             return articleVm;
         }
 

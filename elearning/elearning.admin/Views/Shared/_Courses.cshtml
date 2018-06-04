@@ -1,15 +1,15 @@
-﻿@using System.Diagnostics.PerformanceData
-@using elearning.model.DataModels
+﻿@using elearning.model.DataModels
+@using elearning.admin.Helpers
 
 @model IEnumerable<Course>
 
-<section class="container">
+<section class="container-full">
     <div class="row active-with-click">
         @if (Model.Any())
         {
             foreach (var course in Model)
              {
-                 <div class="col-md-4 col-sm-6 col-xs-12">
+                 <div class="col-md-6 col-sm-6 col-xs-12">
                      <article class="material-card Teal mc-active">
                          <h2>                            
                              <strong>
@@ -19,7 +19,7 @@
                          </h2>
                          <div class="mc-content">
                              <div class="img-container">
-                                 <img class="img-responsive" src="~/Content/img/courses/c-sharp.png">
+                                 @Html.GetCourseMainImageHtml(course.MainImageLink, "img-responsive", "/ImageUpload", "")
                              </div>
                              <div class="mc-description">
                                 @Html.Raw(course.ShortDescription)

@@ -9,6 +9,7 @@
 
 using AutoMapper;
 using elearning.model.DataModels;
+using elearning.model.Enums;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
 using System;
@@ -23,17 +24,25 @@ namespace elearning.admin.Controllers
         // GET: CourseChapters
         public ActionResult Index()
         {
-            var courseChapterList = CourseChapterService.GetAll();
-            return View(courseChapterList);
+            return View();
         }
 
-        [HttpGet]
-        public ActionResult Create()
+        public ActionResult GetChapters(int id)
         {
-            return View(new CourseChapterEditVm());
+            ViewBag.CourseId = id;
+            var chapters = CourseChapterService.GetRelatedCourseChapter(id);
+            return View("Chapters", chapters);
+        }
+
+        [HttpGet]       
+        public ActionResult Create(int id)
+        {
+            return View(new CourseChapterEditVm {CourseId = id });
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(CourseChapterEditVm model)
         {
             if (!ModelState.IsValid)
@@ -43,6 +52,17 @@ namespace elearning.admin.Controllers
 
             model.CreatedBy = CurrentUserDb.Identity;
             model.DateCreated = DateTime.Now;
+            model.StatusId = (int)CourseChapterStatus.Draft;
+
+            var newChapter = CourseChapterService.AddCourseChapter(model);
+
+            if(newChapter != null && newChapter.Id > 0)
+            {
+                return Redirect("~/coursechapter/getchapters/" + model.CourseId);
+            }
+
+            ModelState.AddModelError("Failed Course chapter Add", "Sorry could not add course chapter.");
+            model.ShowError = true;
 
             return View(model);
         }
@@ -51,13 +71,14 @@ namespace elearning.admin.Controllers
         public ActionResult Details(int id)
         {
             var courseChapter = CourseChapterService.GetCourseChapter(id);
-
             var courseChapterVm = Mapper.Map<CourseChapter, CourseChapterEditVm>(courseChapter);
 
             return View(courseChapterVm);
         }
 
         [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
         public ActionResult SaveDetails(CourseChapterEditVm model)
         {
             if (!ModelState.IsValid)
@@ -71,7 +92,7 @@ namespace elearning.admin.Controllers
             //save the details here.
             CourseChapterService.Update(model);
 
-            return Redirect("~/CourseChapter");
+            return Redirect("~/CourseChapter/details/" + model.Id);
         }
     }
 }

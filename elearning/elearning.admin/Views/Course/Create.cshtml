@@ -1,6 +1,8 @@
 ﻿
 @model elearning.model.ViewModels.CourseEditVm
 
+<h1>Breadcrumb needed............</h1>
+
 <h2 class="medium-title">Course Create</h2>
 <!-- Form -->
 
@@ -9,6 +11,9 @@
     <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 }
 
+<div class="form-group">
+    @Html.Partial("_FileUpload", Model.FileModel)
+</div>
 
 @Html.Partial("Forms/_CourseEdit")
 
@@ -18,7 +23,7 @@
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
 
     <script>
-        var MaxFileUpload = 0;
+        var MaxFileUpload = @Model.FileModel.MaxFileUpload;
         var YoutubePreviewId = "youtubepreview";
         var YoutubeSourceCtrlId = "YoutubeLink";
     </script>

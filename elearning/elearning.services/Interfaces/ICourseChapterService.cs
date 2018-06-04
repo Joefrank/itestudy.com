@@ -17,6 +17,7 @@ namespace elearning.services.Interfaces
     {
         CourseChapter AddCourseChapter(CourseChapterEditVm model);
         IEnumerable<CourseChapter> FindCourseChapter(string keyowrd);
+        IEnumerable<CourseChapterVm> GetRelatedCourseChapter(int courseId);
         List<CourseChapter> GetActiveCourseChapters();
         List<CourseChapter> GetAll();
         List<CourseChapter> GetAllSimple();

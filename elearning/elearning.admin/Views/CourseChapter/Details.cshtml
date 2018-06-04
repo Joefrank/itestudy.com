@@ -1,6 +1,6 @@
 @model elearning.model.ViewModels.CourseChapterEditVm
 
-<h2 class="medium-title">Edit CourseChapterEditVm</h2>
+<h2 class="medium-title">Edit Chapter</h2>
 
 <!-- Form -->
 @section HeaderScripts{
@@ -11,5 +11,14 @@
 @Html.Partial("~/Views/Shared/Forms/_CourseChapterEdit.cshtml")
 
 @section BottomScripts{
+
     <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
+
+    <script>
+        var MaxFileUpload = 0;
+        var YoutubePreviewId = "youtubepreview";
+        var YoutubeSourceCtrlId = "YoutubeLink";
+    </script>
+
+    <script src="~/scripts/site/course.js"></script>
 }

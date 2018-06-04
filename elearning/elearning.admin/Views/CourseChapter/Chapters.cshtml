@@ -1,0 +1,34 @@
+@using elearning.model.ViewModels
+
+@model IEnumerable<CourseChapterVm>
+
+
+@section HeaderScripts{
+    @Html.Partial("_TableCSS")
+}
+
+<div class="blog-post">
+    <!-- Post Content -->
+    <div class="post-content">
+        <h3 class="post-title">CourseChapters List</h3>
+        <p>
+            Find below a list of CourseChapters related to .
+        </p>
+    </div>
+    <!-- Post Content -->
+    <!-- Read btn -->
+
+    <div>
+        @Html.Partial("~/Views/Shared/_CourseChapters.cshtml", Model)
+    </div>
+
+    <p>
+        <br />
+        <a class="btn btn-common" href="/coursechapter/create/@ViewBag.CourseId">Add Chapter <i class="fa fa-angle-right"></i></a>
+        <br />
+    </p>
+</div>
+
+@section BottomScripts{
+    @Html.Partial("_TableJS")
+}

@@ -28,7 +28,10 @@ namespace elearning.services.Implementation
 
                 using (var context = new DataDbContext())
                 {
+                    var course = context.Courses.FirstOrDefault(x => x.Id == model.CourseId);
                     context.CourseChapters.Add(courseChapter);
+
+                    course.ChapterCount++;
                     context.SaveChanges();
                 }
 
@@ -56,6 +59,29 @@ namespace elearning.services.Implementation
                 }
 
                 return returnList;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogItem(ex.Message);
+                return null;
+            }
+        }
+
+        public IEnumerable<CourseChapterVm> GetRelatedCourseChapter(int courseId)
+        {
+            try
+            {
+                IEnumerable<CourseChapter> returnList;
+
+                using (var context = new DataDbContext())
+                {
+                    returnList = context.CourseChapters
+                        .Include("Creator")
+                        .Include("LastModifier")
+                        .Where(x => x.CourseId == courseId).ToList();
+                }
+
+                return Mapper.Map<IEnumerable<CourseChapter>, IEnumerable<CourseChapterVm>>(returnList);
             }
             catch (Exception ex)
             {

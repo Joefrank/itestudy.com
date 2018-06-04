@@ -60,7 +60,12 @@
 
 <script type="text/javascript">
     var imageIdCtrl = '@Model.ImageIdCtrl';
-    
+
+    function ShowFileUpload(ctrlId, ctrlId2) {
+        $('#' + ctrlId).fadeIn("slow");
+        $('#' + ctrlId2).fadeOut();
+    }
+
     Dropzone.options.myAwesomeDropzone = {
         dictDefaultMessage: "Drag and drop files here or click to upload.",
         thumbnailWidth: 200,

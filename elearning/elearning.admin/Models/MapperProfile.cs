@@ -1,7 +1,9 @@
 using AutoMapper;
 using elearning.model.DataModels;
+using elearning.model.Enums;
 using elearning.model.ViewModels;
 using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 
@@ -42,6 +44,14 @@ namespace elearning.admin.Models
             CreateMap<CourseEditVm, Course>();
             CreateMap<CourseChapter, CourseChapterEditVm>();
             CreateMap<CourseChapterEditVm, CourseChapter>();
+            CreateMap<CourseChapter, CourseChapterVm>()
+                .ForMember(g => g.Status, opt => opt.MapFrom(source => ((CourseChapterStatus)source.StatusId).ToString()))
+                .ForMember(g => g.Creator, opt => opt.MapFrom(source => (source.Creator.Firstname + " " + source.Creator.Lastname)))
+                .ForMember(g => g.LastModifier, opt => opt.MapFrom(source => 
+                    (source.LastModifier != null? source.LastModifier.Firstname + " " + source.LastModifier.Lastname : "")));
+
+            //CreateMap<IEnumerable<CourseChapter>, IEnumerable<CourseChapterVm>>();
+
             /***Mapping_Injection***/
 
         }
