@@ -1,7 +1,16 @@
 @using elearning.model.ViewModels
+@using elearning.admin.Helpers
+
 
 @model IEnumerable<CourseChapterVm>
 
+@{
+    var crumb = ViewBag.BreadCrumb as IEnumerable<Crumb>;
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
 
 @section HeaderScripts{
     @Html.Partial("_TableCSS")
@@ -10,7 +19,7 @@
 <div class="blog-post">
     <!-- Post Content -->
     <div class="post-content">
-        <h3 class="post-title">CourseChapters List</h3>
+        <h3 class="post-title">Chapter(s) List</h3>
         <p>
             Find below a list of CourseChapters related to .
         </p>

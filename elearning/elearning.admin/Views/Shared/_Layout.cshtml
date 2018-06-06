@@ -65,15 +65,17 @@
 
     <div id="content">
         <div class="container">
+            
             <div class="row">
                 @if (settings.ClientUser != null && settings.ClientUser.IsLogged() && AuthHelper.IsCurrentUserAdmin(settings.ClientUser))
                 {
-                    <!--Sidebar-->
-                    <aside id="sidebar" class="col-md-4 right-sidebar">
-                     <!-- Search Widget -->                   
-                     @Html.Partial("_Menu")
-                    </aside>
+                        <!--Sidebar-->
+                        <aside id="sidebar" class="col-md-4 right-sidebar">
+                            <!-- Search Widget -->
+                            @Html.Partial("_Menu")
+                        </aside>
                 }
+                @RenderSection("breadcrumb", false)
 
                 <div class="col-md-8">
                     @RenderBody()

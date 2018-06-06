@@ -43,11 +43,11 @@ $(document).ready(function () {
             makePreview(link);
     }
 
-    $('#frmCourse').submit(function () {
-        $('#MainImageLink').prop("disabled", false);
-        alert('enabled mainlinke');
-        return false;
-    });
+    //$('#frmCourse').submit(function () {
+    //    $('#MainImageLink').prop("disabled", false);
+    //    alert('enabled mainlinke');
+    //    return false;
+    //});
 
     LoadYoutubeVideo();
 });

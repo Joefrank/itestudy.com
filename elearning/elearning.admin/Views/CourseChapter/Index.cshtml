@@ -1,3 +1,18 @@
+@using elearning.model.ViewModels
+@using elearning.admin.Helpers
+
+@{   
+
+    var crumb = new List<Crumb>{
+    new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+    new Crumb{Name = "CourseChapters", Title="This is current page", Label = "Course Chapters"}
+    };
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
+
 <div class="blog-post">
     <!-- Post Content -->
     <div class="post-content">

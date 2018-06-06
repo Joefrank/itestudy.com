@@ -1,6 +1,17 @@
+@using elearning.admin.Helpers
+@using elearning.model.ViewModels
+
 @model elearning.model.ViewModels.CourseChapterEditVm
 
+@{
+    var crumb = ViewBag.BreadCrumb as IEnumerable<Crumb>;
+}
+
 <h2 class="medium-title">Edit Chapter</h2>
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
 
 <!-- Form -->
 @section HeaderScripts{

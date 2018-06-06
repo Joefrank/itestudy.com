@@ -1,11 +1,23 @@
 ﻿@using elearning.model.DataModels
+@using elearning.model.ViewModels
+@using elearning.admin.Helpers
 
 @model IEnumerable<Course>
 
 @section HeaderScripts{
-    <link rel="stylesheet" type="text/css" href="~/Content/css/vendor/card-layout/material-cards.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/css/vendor/card-layout/material-cards.css" />
 }
-    <h1>Breadcrumb needed............</h1>
+
+@{
+    var crumb = new List<Crumb>{
+new Crumb{Name = "Courses", Label = "Course", Title="This is current page" }
+};
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
+
 <div class="blog-post">
     <!-- Post Content -->
     <div class="post-content">
@@ -27,9 +39,9 @@
 </div>
 
 @section BottomScripts{
-    
+
     <script>
-        $(function() {
+        $(function () {
             $('.material-card > .mc-btn-action').click(function () {
                 var card = $(this).parent('.material-card');
                 var icon = $(this).children('i');
@@ -38,7 +50,7 @@
                 if (card.hasClass('mc-active')) {
                     card.removeClass('mc-active');
 
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         icon
                             .removeClass('fa-arrow-left')
                             .removeClass('fa-spin-fast')
@@ -48,7 +60,7 @@
                 } else {
                     card.addClass('mc-active');
 
-                    window.setTimeout(function() {
+                    window.setTimeout(function () {
                         icon
                             .removeClass('fa-bars')
                             .removeClass('fa-spin-fast')

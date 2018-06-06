@@ -1,14 +1,26 @@
-﻿
-@model elearning.model.ViewModels.CourseEditVm
+﻿@using elearning.model.ViewModels
+@using elearning.admin.Helpers
 
-<h1>Breadcrumb needed............</h1>
+@model elearning.model.ViewModels.CourseEditVm
 
 <h2 class="medium-title">Course Create</h2>
 <!-- Form -->
 
-@section HeaderScripts{
+@{ 
+    var crumb = new List<Crumb>{
+        new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+        new Crumb{Name = "CourseCreate", Title="This is current page", Label = "Course Create"}
+    };
+
+}
+
+    @section HeaderScripts{
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
 }
 
 <div class="form-group">
@@ -27,6 +39,6 @@
         var YoutubePreviewId = "youtubepreview";
         var YoutubeSourceCtrlId = "YoutubeLink";
     </script>
-   
+
     <script src="~/scripts/site/course.js"></script>
 }

@@ -1,41 +1,53 @@
-﻿
+﻿@using elearning.model.ViewModels
+@using elearning.admin.Helpers
+
 @model elearning.model.ViewModels.CourseEditVm
-@using elearning.model.ViewModels
+
 
 @{
     var showFileUpload = (Model.MainImageLink == null || Model.MainImageLink == Guid.Empty);
     var mainImageHtml = (Model.MainImageLink != null && Model.MainImageLink.HasValue) ?
-            "<img src=\"" + Model.MainImage.ImageUrl + "\" alt=\"" + Model.MainImage.Name + "\" />" : "";    
+            "<img src=\"" + Model.MainImage.ImageUrl + "\" alt=\"" + Model.MainImage.Name + "\" />" : "";
+
+    var crumb = new List<Crumb>{
+    new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+    new Crumb{Name = "CourseEdit", Title="This is current page", Label = "Course Edit"}
+    };
 }
-<h1>Breadcrumb needed............</h1>
+
 <h2 class="medium-title">Course Edit</h2>
 <!-- Form -->
 
 @section HeaderScripts{
+    <!-- remove the next line as there is another ref. but change rtf editor-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
     <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
 }
 
-    <div class="form-group">
-        <!-- chapters -->
-        <h4>Course Chapters</h4>
-        @if (Model.CourseChapterCount > 0)
-        {
-            <a href="/coursechapter/getchapters/@Model.Id" title="View all chapters">@Model.CourseChapterCount chapter(s)</a> 
-        }
-        else
-        {
-            <p class="validation-summary-errors">
-                There are no chapters assoiated with this course.
-            </p>
-        }
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
 
-            <p>
-                <br />
-                <a class="btn btn-common" href="/coursechapter/create/@Model.Id">Add Chapter <i class="fa fa-angle-right"></i></a>
-                <br />
-            </p>
-    </div>
+<div class="form-group">
+    <!-- chapters -->
+   
+    @if (Model.CourseChapterCount > 0)
+    {
+        <a href="/coursechapter/getchapters/@Model.Id" title="View all chapters">@Model.CourseChapterCount chapter(s)</a>
+    }
+    else
+    {
+        <p class="validation-summary-errors">
+            There are no chapters assoiated with this course.
+        </p>
+    }
+
+    <p>
+        <br />
+        <a class="btn btn-common" href="/coursechapter/create/@Model.Id">Add Chapter <i class="fa fa-angle-right"></i></a>
+        <br />
+    </p>
+</div>
 
 <div id="fileUpload" class="form-group" style="display:@(showFileUpload? "block" : "none")">
     @Html.Partial("_FileUpload", Model.FileModel)

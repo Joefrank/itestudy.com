@@ -107,6 +107,7 @@
     <Compile Include="ViewModels\CourseChapterEditVm.cs" />
     <Compile Include="ViewModels\CourseChapterVm.cs" />
     <Compile Include="ViewModels\CourseEditVm.cs" />
+    <Compile Include="ViewModels\Crumb.cs" />
     <Compile Include="ViewModels\EditArticleVm.cs" />
     <Compile Include="ViewModels\AricleListVm.cs" />
     <Compile Include="ViewModels\CategoryListVm.cs" />

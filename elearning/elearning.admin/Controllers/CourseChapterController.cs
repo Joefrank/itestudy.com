@@ -13,6 +13,8 @@ using elearning.model.Enums;
 using elearning.model.ViewModels;
 using elearning.services.Interfaces;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace elearning.admin.Controllers
@@ -20,6 +22,7 @@ namespace elearning.admin.Controllers
     public class CourseChapterController : BaseAdminController
     {
         public ICourseChapterService CourseChapterService { get; set; }
+        public ICourseService CourseService { get; set; }
 
         // GET: CourseChapters
         public ActionResult Index()
@@ -31,12 +34,20 @@ namespace elearning.admin.Controllers
         {
             ViewBag.CourseId = id;
             var chapters = CourseChapterService.GetRelatedCourseChapter(id);
+            
+            if (chapters.Any())
+            {
+                MakeBreadCrumb(chapters.FirstOrDefault().CourseId, "Course Chapters");
+            }
+
             return View("Chapters", chapters);
         }
 
         [HttpGet]       
         public ActionResult Create(int id)
         {
+            MakeBreadCrumb(id, "Create Chapter",4);
+
             return View(new CourseChapterEditVm {CourseId = id });
         }
 
@@ -45,6 +56,8 @@ namespace elearning.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CourseChapterEditVm model)
         {
+            MakeBreadCrumb(model.CourseId, "Create Chapter",4);
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -73,6 +86,8 @@ namespace elearning.admin.Controllers
             var courseChapter = CourseChapterService.GetCourseChapter(id);
             var courseChapterVm = Mapper.Map<CourseChapter, CourseChapterEditVm>(courseChapter);
 
+            MakeBreadCrumb(courseChapter.CourseId, "Edit Chapter",4);
+
             return View(courseChapterVm);
         }
 
@@ -80,7 +95,9 @@ namespace elearning.admin.Controllers
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult SaveDetails(CourseChapterEditVm model)
-        {
+        {            
+            MakeBreadCrumb(model.CourseId, "Edit Chapter", 4);
+
             if (!ModelState.IsValid)
             {
                 return View("Details", model);
@@ -93,6 +110,44 @@ namespace elearning.admin.Controllers
             CourseChapterService.Update(model);
 
             return Redirect("~/CourseChapter/details/" + model.Id);
+        }
+
+        private void MakeBreadCrumb(int courseId, string lastLabel, int level =3)
+        {
+           var course = CourseService.GetCourse(courseId);
+
+            var crumb = new List<Crumb>{
+                new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+                new Crumb{Name = "CurrentPage", Title="This is current page", Label = lastLabel}
+                };
+
+            if(level > 3)
+            {
+                var parentCrumb = new Crumb
+                {
+                    Name = "CourseChapters",
+                    Label = "Course Chapters",
+                    Title = "Course Chapters",
+                    Url = "/coursechapter/getchapters/" + course.Id
+                };
+
+                crumb.Insert(1, parentCrumb);
+            }
+           
+            if (course != null)
+            {
+                var parentCrumb = new Crumb
+                {
+                    Name = "ParentCourse",
+                    Label = course.Title,
+                    Title = course.Title,
+                    Url = "/course/details/" + course.Id
+                };
+
+                crumb.Insert(1, parentCrumb);
+            }
+
+            ViewBag.BreadCrumb = crumb;
         }
     }
 }
