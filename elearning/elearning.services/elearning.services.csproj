@@ -105,7 +105,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Apps\CMCommonLibrary\CMCommon\CMCommon.csproj">
+    <ProjectReference Include="..\CMCommon\CMCommon.csproj">
       <Project>{86d58f3b-a1c2-4db2-81aa-e4b43356d644}</Project>
       <Name>CMCommon</Name>
     </ProjectReference>

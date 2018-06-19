@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0EA92AD3-B7DB-4CC4-9A6C-307C86E44442}</ProjectGuid>
+    <ProjectGuid>{86D58F3B-A1C2-4DB2-81AA-E4B43356D644}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>elearning.data</RootNamespace>
-    <AssemblyName>elearning.data</AssemblyName>
+    <RootNamespace>CMCommon</RootNamespace>
+    <AssemblyName>CMCommon</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,15 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,35 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ELearningContextCustomInitializer.cs" />
-    <Compile Include="DataDbContext.cs" />
-    <Compile Include="Migrations\201806041557148_Update04062018.cs" />
-    <Compile Include="Migrations\201806041557148_Update04062018.Designer.cs">
-      <DependentUpon>201806041557148_Update04062018.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Authentication\Implementation\OCKAuthService.cs" />
+    <Compile Include="Authentication\Interfaces\IOAuthService.cs" />
+    <Compile Include="Authentication\Model\ClientUser.cs" />
+    <Compile Include="Authentication\Model\ProfileCheck.cs" />
+    <Compile Include="Enums\ReturnStatus.cs" />
+    <Compile Include="Logging\Implementation\DBLoggerService.cs" />
+    <Compile Include="Emailing\Implementation\EmailService.cs" />
+    <Compile Include="Emailing\Interfaces\IEmailService.cs" />
+    <Compile Include="Logging\Interfaces\ILoggerService.cs" />
+    <Compile Include="Model\EmailStruct.cs" />
+    <Compile Include="Model\ReturnStructure.cs" />
+    <Compile Include="Model\SmtpSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Content Include="SQL\StoredProcs\LogItem.sql" />
+    <Compile Include="Security\Implementation\EncryptionService.cs" />
+    <Compile Include="Security\Interfaces\IEncryptionService.cs" />
+    <Compile Include="Utils\Implementation\RandomStringGenerator.cs" />
+    <Compile Include="Utils\Interfaces\IRandomStringGenerator.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CMCommon\CMCommon.csproj">
-      <Project>{86d58f3b-a1c2-4db2-81aa-e4b43356d644}</Project>
-      <Name>CMCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\elearning.model\elearning.model.csproj">
-      <Project>{396f38e7-fd3c-49c5-aab6-d64fb62f1e6d}</Project>
-      <Name>elearning.model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201806041557148_Update04062018.resx">
-      <DependentUpon>201806041557148_Update04062018.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
