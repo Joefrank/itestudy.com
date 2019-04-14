@@ -167,7 +167,7 @@ namespace elearning.services.Implementation
                 using (var context = new DataDbContext())
                 {
                     var category = context.ArticleCategories.FirstOrDefault(x => x.Id == categoryId);
-                    context.ArticleCategories.Remove(category ?? throw new InvalidOperationException());
+                    context.ArticleCategories.Remove(category);
                     context.SaveChanges();
                 }
                 return true;

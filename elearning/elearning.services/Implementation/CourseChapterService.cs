@@ -175,7 +175,7 @@ namespace elearning.services.Implementation
                 using (var context = new DataDbContext())
                 {
                     var courseChapter = context.CourseChapters.FirstOrDefault(x => x.Id == courseChapterId);
-                    context.CourseChapters.Remove(courseChapter ?? throw new InvalidOperationException());
+                    context.CourseChapters.Remove(courseChapter);
                     context.SaveChanges();
                 }
                 return true;

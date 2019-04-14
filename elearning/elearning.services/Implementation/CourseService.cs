@@ -169,7 +169,7 @@ namespace elearning.services.Interfaces
                 using (var context = new DataDbContext())
                 {
                     var course = context.Courses.FirstOrDefault(x => x.Id == courseId);
-                    context.Courses.Remove(course ?? throw new InvalidOperationException());
+                    context.Courses.Remove(course);
                     context.SaveChanges();
                 }
                 return true;
