@@ -1,0 +1,43 @@
+@using elearning.model.ViewModels
+@using elearning.admin.Helpers
+
+
+@model IEnumerable<CourseChapterVm>
+
+@{
+    var crumb = ViewBag.BreadCrumb as IEnumerable<Crumb>;
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
+
+@section HeaderScripts{
+    @Html.Partial("_TableCSS")
+}
+
+<div class="blog-post">
+    <!-- Post Content -->
+    <div class="post-content">
+        <h3 class="post-title">Chapter(s) List</h3>
+        <p>
+            Find below a list of CourseChapters related to .
+        </p>
+    </div>
+    <!-- Post Content -->
+    <!-- Read btn -->
+
+    <div>
+        @Html.Partial("~/Views/Shared/_CourseChapters.cshtml", Model)
+    </div>
+
+    <p>
+        <br />
+        <a class="btn btn-common" href="/coursechapter/create/@ViewBag.CourseId">Add Chapter <i class="fa fa-angle-right"></i></a>
+        <br />
+    </p>
+</div>
+
+@section BottomScripts{
+    @Html.Partial("_TableJS")
+}

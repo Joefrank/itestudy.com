@@ -25,12 +25,12 @@ namespace elearning.model.DataModels
         [EditableCG(1)]
         public string Description { get; set; }
         public DateTime DateCreated { get; set; }
-        public DateTime DateLastModified { get; set; }
+        public DateTime? DateLastModified { get; set; }
         [EditableCG(1)]
         public int StatusId { get; set; }
         public int CreatedBy { get; set; }
         [EditableCG(2)]
-        public int LastModifiedBy { get; set; }
+        public int? LastModifiedBy { get; set; }
         [EditableCG(2)]
         public int LessonCount { get; set; }
         [EditableCG(2)]

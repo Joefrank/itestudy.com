@@ -362,6 +362,7 @@
     </Compile>
     <Compile Include="Helpers\ArticleHelper.cs" />
     <Compile Include="Helpers\CourseHelper.cs" />
+    <Compile Include="Helpers\GenericHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Models\CustomAttributes\CustomAuthAttribute.cs" />
     <Compile Include="Models\MapperProfile.cs" />
@@ -447,6 +448,7 @@
     <Content Include="Views\Shared\Forms\_CourseChapterEdit.cshtml" />
     <Content Include="Views\Shared\_CourseChapters.cshtml" />
     <Content Include="Views\Shared\Forms\_CourseEdit.cshtml" />
+    <Content Include="Views\CourseChapter\Chapters.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -459,7 +461,7 @@
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Apps\CMCommonLibrary\CMCommon\CMCommon.csproj">
+    <ProjectReference Include="..\CMCommon\CMCommon.csproj">
       <Project>{86d58f3b-a1c2-4db2-81aa-e4b43356d644}</Project>
       <Name>CMCommon</Name>
     </ProjectReference>

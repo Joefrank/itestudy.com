@@ -8,9 +8,9 @@
     var actionEditName = Model.ArticleId > 0 ? "Update" : "Create";
 
     var categoryList = ArticleHelper.GetCategoryList();
-    var typeList = ArticleHelper.GetGlossaryList<ArticleType>();
-    var relatedObjectTypeList = ArticleHelper.GetGlossaryList<ArticleRelatedObjectType>();
-    var statusList = ArticleHelper.GetGlossaryList<ArticleStatus>();
+    var typeList = GenericHelper.GetGlossaryList<ArticleType>();
+    var relatedObjectTypeList = GenericHelper.GetGlossaryList<ArticleRelatedObjectType>();
+    var statusList = GenericHelper.GetGlossaryList<ArticleStatus>();
 }
 
 @using (Html.BeginForm(actionEditName, "Articles", FormMethod.Post, new { id = "frmArticle", name = "frmArticle" }))
@@ -34,7 +34,6 @@
     <div class="form-group" id="youtubepreview"></div>
 
     <div class="form-group">
-        <label for="MainImageLink">Main Image </label>
         @Html.TextBoxFor(x => x.MainImageLink, new { @class = "form-control", @placeholder = "Main Image Link", @disabled = "disabled" })
     </div>
 

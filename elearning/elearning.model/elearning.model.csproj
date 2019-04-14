@@ -105,7 +105,9 @@
     <Compile Include="ViewModels\CourseCategoryEditVm.cs" />
     <Content Include="ViewModels\TemplateEditVm.txt" />
     <Compile Include="ViewModels\CourseChapterEditVm.cs" />
+    <Compile Include="ViewModels\CourseChapterVm.cs" />
     <Compile Include="ViewModels\CourseEditVm.cs" />
+    <Compile Include="ViewModels\Crumb.cs" />
     <Compile Include="ViewModels\EditArticleVm.cs" />
     <Compile Include="ViewModels\AricleListVm.cs" />
     <Compile Include="ViewModels\CategoryListVm.cs" />
@@ -120,15 +122,14 @@
     <Compile Include="ViewModels\UpdataArticleVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Apps\CMCommonLibrary\CMCommon\CMCommon.csproj">
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMCommon\CMCommon.csproj">
       <Project>{86d58f3b-a1c2-4db2-81aa-e4b43356d644}</Project>
       <Name>CMCommon</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

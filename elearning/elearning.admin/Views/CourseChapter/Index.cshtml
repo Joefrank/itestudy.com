@@ -1,27 +1,35 @@
-@using elearning.model.DataModels
+@using elearning.model.ViewModels
+@using elearning.admin.Helpers
 
-@model IEnumerable<CourseChapter>
+@{   
 
-@section HeaderScripts{
-    @Html.Partial("_TableCSS")
+    var crumb = new List<Crumb>{
+    new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+    new Crumb{Name = "CourseChapters", Title="This is current page", Label = "Course Chapters"}
+    };
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
 }
 
 <div class="blog-post">
     <!-- Post Content -->
     <div class="post-content">
-        <h3 class="post-title">CourseChapters List</h3>
+
         <p>
-            Find below a list of CourseChapters on the site.
+            You cannot view chapters directly from this page.
+        </p>
+        <p>
+            Please choose a course to view all related chapters.
+        </p>
+        <p>
+            <br />
+            <a class="btn btn-common" href="/course">View Courses <i class="fa fa-angle-right"></i></a>
+            <br />
         </p>
     </div>
     <!-- Post Content -->
     <!-- Read btn -->
 
-    <div>
-        @Html.Partial("~/Views/Shared/_CourseChapters.cshtml", Model)
-    </div>
 </div>
-
-@section BottomScripts{
-    @Html.Partial("_TableJS")
-}

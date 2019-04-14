@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="ElearningApplication.cs" />
     <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Helpers\FileUploadHelper.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="ListGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,7 +87,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Apps\CMCommonLibrary\CMCommon\CMCommon.csproj">
+    <ProjectReference Include="..\CMCommon\CMCommon.csproj">
       <Project>{86d58f3b-a1c2-4db2-81aa-e4b43356d644}</Project>
       <Name>CMCommon</Name>
     </ProjectReference>

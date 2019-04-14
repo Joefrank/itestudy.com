@@ -1,1 +1,81 @@
-﻿
+﻿@using elearning.model.ViewModels
+@using elearning.admin.Helpers
+
+@model elearning.model.ViewModels.CourseEditVm
+
+
+@{
+    var showFileUpload = (Model.MainImageLink == null || Model.MainImageLink == Guid.Empty);
+    var mainImageHtml = (Model.MainImageLink != null && Model.MainImageLink.HasValue) ?
+            "<img src=\"" + Model.MainImage.ImageUrl + "\" alt=\"" + Model.MainImage.Name + "\" />" : "";
+
+    var crumb = new List<Crumb>{
+    new Crumb{Name = "Courses", Label = "Course", Title="View courses", Url ="/course" },
+    new Crumb{Name = "CourseEdit", Title="This is current page", Label = "Course Edit"}
+    };
+}
+
+<h2 class="medium-title">Course Edit</h2>
+<!-- Form -->
+
+@section HeaderScripts{
+    <!-- remove the next line as there is another ref. but change rtf editor-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <link href="~/Content/css/summernote/summernote.css" rel="stylesheet">
+}
+
+@section breadcrumb{
+    @Html.MakeBreadCrumb(crumb)
+}
+
+<div class="form-group">
+    <!-- chapters -->
+   
+    @if (Model.CourseChapterCount > 0)
+    {
+        <a href="/coursechapter/getchapters/@Model.Id" title="View all chapters">@Model.CourseChapterCount chapter(s)</a>
+    }
+    else
+    {
+        <p class="validation-summary-errors">
+            There are no chapters assoiated with this course.
+        </p>
+    }
+
+    <p>
+        <br />
+        <a class="btn btn-common" href="/coursechapter/create/@Model.Id">Add Chapter <i class="fa fa-angle-right"></i></a>
+        <br />
+    </p>
+</div>
+
+<div id="fileUpload" class="form-group" style="display:@(showFileUpload? "block" : "none")">
+    @Html.Partial("_FileUpload", Model.FileModel)
+</div>
+
+<div id="fileAlternative" class="form-group" style="display:@(showFileUpload? "none" : "block")">
+    @Html.Raw(mainImageHtml)
+
+    <div class="form-group">
+        <p>
+            <a href="#" onclick="return ShowFileUpload('fileUpload','fileAlternative');">Edit Image</a>
+        </p>
+    </div>
+</div>
+
+
+@Html.Partial("Forms/_CourseEdit")
+
+
+@section BottomScripts{
+
+    <script src="~/scripts/htmleditor/summernote/summernote.min.js"></script>
+
+    <script>
+        var MaxFileUpload = @Model.FileModel.MaxFileUpload;
+        var YoutubePreviewId = "youtubepreview";
+        var YoutubeSourceCtrlId = "YoutubeLink";
+    </script>
+
+    <script src="~/scripts/site/course.js"></script>
+}
